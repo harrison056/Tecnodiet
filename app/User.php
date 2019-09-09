@@ -38,6 +38,6 @@ class User extends Authenticatable
     ];
 
     public function nutricionista(){
-        return $this->hasOne(Nutricionista::class);
-    }
+        return $this->belongsTo(Nutricionista::class);
+    }   
 }

@@ -9,8 +9,6 @@
 	@endif
 
 <h1>Página Inicial</h1>
-<ul>
-	<li><a href="{{ url('nutricionista/edit') }}">Editar Cadastro</a></li>
-</ul>
+
 
 @endsection

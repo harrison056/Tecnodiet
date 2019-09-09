@@ -12,32 +12,25 @@ class NutricionistaController extends Controller
     
     public function index()
     {
-        if (Auth::check()) {
-            return view('nutricionista.index'); 
-        }else{
-            return redirect('login');
-        }
+        return view('nutricionista.index'); 
     }
 
     
     public function create()
     {
-        $user = new User();
-        if (Auth::check()) {
-           // if () {
-                return view('nutricionista.create');
-            //}else{
-            //    return view('nutricionista.edit');
-           // }   
-        }else{
-            return redirect('login');
-        }
+        return view('nutricionista.create');   
     }
 
    
     public function store(Request $request)
     {
-        $user = factory(\App\User::class)->create();
+        $this->validate($request,[
+            'nome' => 'required|min:10',
+            'tel' => 'required|numeric',
+            'sexo' => 'required',
+            'crn' => 'required|numeric',
+            'endereco' => 'required|min:10'
+        ]);
 
         $nutricionista = new Nutricionista();
         $nutricionista->nome = $request->input('nome');
@@ -46,8 +39,8 @@ class NutricionistaController extends Controller
         $nutricionista->crn = $request->input('crn');
         $nutricionista->endereco = $request->input('endereco');
         $nutricionista->qtdPaciente = $request->input('qtdPaciente');
-        
-        $user->nutricionista()->save($nutricionista);
+        $nutricionista->user_id = Auth::user()->id;
+//        $nutricionista->user()->associate(Auth::user());
 
         if($nutricionista->save()){
             return redirect('nutricionista')->with('success', 'Cadastro realizado com sucesso!');
@@ -55,27 +48,35 @@ class NutricionistaController extends Controller
 
     }
 
-    
-    public function show($id)
-    {
-        //
-    }
-
-    
     public function edit($id)
     {
-        if (Auth::check()) {
-            $nutricionista = Nutricionista::find($id);
-            return view('nutricionista.edit', compact('nutricionista', 'id'));
-        }else{
-            return redirect('login');
-        }
+        $nutricionista = Nutricionista::find($id);
+        return view('nutricionista.edit', compact('nutricionista', 'id'));
     }    
 
     
     public function update(Request $request, $id)
     {
-        //
+        $nutricionista = Nutricionista::find($id);
+
+        $this->validate($request,[
+            'nome' => 'required|min:10',
+            'tel' => 'required|numeric',
+            'sexo' => 'required',
+            'crn' => 'required|numeric',
+            'endereco' => 'required|min:10'
+        ]);
+
+        $nutricionista->nome = $request->get('nome');
+        $nutricionista->telefone = $request->get('tel');
+        $nutricionista->sexo = $request->get('sexo');
+        $nutricionista->crn = $request->get('crn');
+        $nutricionista->endereco = $request->get('endereco');
+        $nutricionista->qtdPaciente = $request->get('qtdPaciente');
+
+        if($nutricionista->save()){
+            return redirect('nutricionista')->with('success', 'Cadastro realizado com sucesso!');
+        }
     }
 
     

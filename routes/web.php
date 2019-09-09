@@ -15,8 +15,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::resource('/nutricionista','NutricionistaController');
-Route::get('/cadastro','NutricionistaController@create');
+Route::resource('/nutricionista','NutricionistaController')->middleware('auth');
+Route::get('/create','NutricionistaController@create');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
