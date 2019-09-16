@@ -61,6 +61,27 @@
                             </div>
                         </div>
 
+                        <div class="form-group mb-3">
+            <label for="titulo">Telefone</label>
+            <input type="text" class="form-control" id="tel" name="tel" placeholder="(xx) xxxxx-xxxx" required>
+        </div>
+        <div class="form-group mb-3">
+            <label for="descricao">Sexo</label>
+            <input type="text" class="form-control" id="sexo" name="sexo" placeholder="Digite seu sexo" required></input>
+        </div>
+        <div class="form-group mb-3">
+            <label for="descricao">CRN</label>
+            <input type="text" class="form-control" id="crn" name="crn" placeholder="Digite CRN" required></input>
+        </div>
+        <div class="form-group mb-3">
+            <label for="descricao">Endereço</label>
+            <input type="text" class="form-control" id="endereco" name="endereco" placeholder="Digite endereco" required></input>
+        </div>
+        <div class="form-group mb-3">
+            <label for="descricao">Plano</label>
+            <input type="text" class="form-control" id="qtdPaciente" name="qtdPaciente" placeholder="Numero de pacientes" required></input>
+        </div>
+
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
                                 <button type="submit" class="btn btn-primary">

@@ -8,7 +8,7 @@
 		<input type="hidden" name="_method" value="PATCH">
 		<div class="form-group mb-3">
 		    <label for="sku">Nome</label>
-		    <input type="text" class="form-control" id="nome" name="nome" value="{{$nutricionista->nome}}" placeholder="Digite seu nome" required>
+		    <input type="text" class="form-control" id="name" name="name" value="{{$nutricionista->name}}" placeholder="Digite seu nome" required>
 	 	</div>
 	 	<div class="form-group mb-3">
 		    <label for="titulo">Telefone</label>

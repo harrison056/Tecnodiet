@@ -9,6 +9,6 @@
 	@endif
 
 <h1>Página Inicial</h1>
-
+<a href="nutricionista/{{Auth::user()->id}}/edit">Alterar Dados</a>
 
 @endsection

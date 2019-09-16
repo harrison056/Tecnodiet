@@ -16,6 +16,9 @@
 
                     You are logged in!
                 </div>
+                <div>
+                    <a href="\nutricionista">Pagina Inicial</a>
+                </div>
             </div>
         </div>
     </div>
