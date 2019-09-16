@@ -26,7 +26,7 @@ class NutricionistaController extends Controller
         $user = User::find($id);
 
         $this->validate($request,[
-            'name' => 'required|min:10',
+            'name' => 'required|max:255',
             'tel' => 'required|numeric',
             'sexo' => 'required',
             'crn' => 'required|numeric',
