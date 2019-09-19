@@ -2,7 +2,18 @@
 @section('title','Tecnodiet - Cadastrar Paciente')
 @section('content')
 
+
+
 <h1>Cadastro de Paciente</h1>
+@if(count($errors)>0)
+		<div class="alert alert-danger">
+			<ul>
+				@foreach($errors->all() as $error)
+				<li>{{$error}}</li>
+				@endforeach
+			</ul>
+		</div>
+	@endif
 <form method="POST" enctype="multipart/form-data" action="{{url('paciente')}}">
 		@csrf
 		<div class="form-group mb-3">

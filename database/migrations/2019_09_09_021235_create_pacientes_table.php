@@ -21,7 +21,7 @@ class CreatePacientesTable extends Migration
             $table->string('sexo');
             $table->string('endereco');
             $table->string('cpf');
-            $table->integer('user_id')->unsigned();
+            $table->integer('user_id')->unsigned()->nullable();
             $table->foreign('user_id')->references('id')->on('users');
 
             $table->timestamps();
