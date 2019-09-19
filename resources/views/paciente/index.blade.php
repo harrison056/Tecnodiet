@@ -12,8 +12,7 @@
 	
 <div class="row">
 	<div class="col-md-12">
-		<form method="POST" action="{{url('paciente/busca')}}">
-				@csrf
+		<form method="GET" action="{{url('paciente/busca')}}">
 				<div class="input-group mb-3">
 					<input type="text" class="form-control" id="busca" name="busca" value="{{$buscar}}">
 					<div class="input-group-append">
