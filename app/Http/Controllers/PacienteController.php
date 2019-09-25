@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Paciente;
 use App\User;
+use App\Logradouro;
 use Illuminate\Support\Facades\Auth;
 
 class PacienteController extends Controller
@@ -16,7 +17,8 @@ class PacienteController extends Controller
 
     public function show($id){
     	$paciente = Paciente::find($id);
-    	return view('paciente.show', array('paciente' => $paciente));
+        $logradouro = Logradouro::find($paciente->logradouro_id);
+    	return view('paciente.show', array('paciente' => $paciente, 'logradouro' => $logradouro));
 	}
 
 	public function create(){
@@ -31,16 +33,22 @@ class PacienteController extends Controller
             'tel' => 'required|numeric',
             'sexo' => 'required',
             'cpf' => 'required|numeric',
-            'endereco' => 'required',
             'email' => 'required|max:255|unique:pacientes'
         ]);
 		
+		$logradouro = new Logradouro();
+        $logradouro->rua = $request['rua'];
+        $logradouro->bairro = $request['bairro'];
+        $logradouro->cidade = $request['cidade'];
+        $logradouro->cep = $request['cep'];
+        $logradouro->save();
+
 		$paciente = Paciente::create([
 			'nome' => $request['nome'],
             'telefone' => $request['tel'],
             'sexo' => $request['sexo'],
             'cpf' => $request['cpf'],
-            'endereco' => $request['endereco'],
+            'logradouro_id' => $logradouro->id,
             'email' => $request['email'],
             'user_id' => Auth::user()->id
 		]);
@@ -54,7 +62,8 @@ class PacienteController extends Controller
 
 	public function edit($id){
 		$paciente = Paciente::find($id);
-		return view('paciente.edit', compact('paciente', 'id'));
+		$logradouro = Logradouro::find($paciente->logradouro_id);
+		return view('paciente.edit', compact('paciente', 'id'), array('logradouro' => $logradouro));
 	}
 
 	public function update(Request $request, $id){
@@ -71,14 +80,19 @@ class PacienteController extends Controller
 		*/
         $paciente = Paciente::find($id);
 
+        $logradouro = Logradouro::find($paciente->logradouro_id);
+
         $paciente->nome = $request->get('nome');
         $paciente->telefone = $request->get('tel');
         $paciente->sexo = $request->get('sexo');
         $paciente->cpf = $request->get('cpf');
-        $paciente->endereco = $request->get('endereco');
         $paciente->email = $request->get('email');
+        $logradouro->rua = $request->get('rua');
+        $logradouro->bairro = $request->get('bairro');
+        $logradouro->cidade = $request->get('cidade');
+        $logradouro->cep = $request->get('cep');
 
-		if ($paciente->save()) {
+		if ($paciente->save() && $logradouro->save()) {
 			return redirect('paciente/' .$id)->with('success', 'Alterações realizadas com sucesso!');
 		}
 		

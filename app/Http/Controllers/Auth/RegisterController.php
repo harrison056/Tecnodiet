@@ -75,23 +75,6 @@ class RegisterController extends Controller
         $logradouro->cep = $data['cep'];
         $logradouro->save();
         
-        $logradouro_id = $logradouro->id;
-        /*
-        $user = new User();
-        $user->name = $data['name'];
-        $user->email = $data['email'];
-        $user->password = Hash::make($data['password']);
-        $user->telefone = $data['tel'];
-        $user->sexo = $data['sexo'];
-        $user->crn = $data['crn'];
-        $user->logradouro_id = $logradouro->id;
-        $user->qtdPaciente = $data['qtdPaciente'];
-        
-        if($user->save()){
-            return redirect('nutricionista');
-        }
-        */
-        
         return User::create([
             'name' => $data['name'],
             'email' => $data['email'],
@@ -99,7 +82,7 @@ class RegisterController extends Controller
             'telefone' => $data['tel'],
             'sexo' => $data['sexo'],
             'crn' => $data['crn'],
-            'logradouro_id' => $logradouro_id,
+            'logradouro_id' => $logradouro->id,
             'qtdPaciente' => $data['qtdPaciente']
         ]);
         

@@ -34,9 +34,21 @@
 		   	<input type="text" class="form-control" id="cpf" name="cpf" value="{{$paciente->cpf}}" placeholder="CPF" required></input>
 	 	</div>
 	 	<div class="form-group mb-3">
-		    <label for="descricao">Endereço</label>
-		   	<input type="text" class="form-control" id="endereco" name="endereco" value="{{$paciente->endereco}}" placeholder="Endereco" required></input>
-	 	</div>
+            <label for="descricao">Cep</label>
+            <input type="text" class="form-control" id="cep" name="cep" value="{{$logradouro->cep}}" placeholder="Digite endereco" required></input>
+        </div>
+        <div class="form-group mb-3">
+            <label for="descricao">Rua</label>
+            <input type="text" class="form-control" id="rua" name="rua" value="{{$logradouro->rua}}" placeholder="Digite endereco" required></input>
+        </div>
+        <div class="form-group mb-3">
+            <label for="descricao">Bairro</label>
+            <input type="text" class="form-control" id="bairro" name="bairro" value="{{$logradouro->bairro}}" placeholder="Digite endereco" required></input>
+        </div>
+        <div class="form-group mb-3">
+            <label for="descricao">Cidade</label>
+            <input type="text" class="form-control" id="cidade" name="cidade" value="{{$logradouro->cidade}}" placeholder="Digite endereco" required></input>
+        </div>
 	 	<div class="form-group mb-3">
 		    <label for="descricao">E-mail</label>
 		   	<input type="text" class="form-control" id="email" name="email" value="{{$paciente->email}}" placeholder="E-mail" required></input>

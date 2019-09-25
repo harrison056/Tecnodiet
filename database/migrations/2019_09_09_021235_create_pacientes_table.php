@@ -19,9 +19,11 @@ class CreatePacientesTable extends Migration
             $table->string('email');
             $table->string('telefone');
             $table->string('sexo');
-            $table->string('endereco');
             $table->string('cpf');
+
             $table->integer('user_id');
+
+            $table->integer('logradouro_id');
 
             $table->timestamps();
         });

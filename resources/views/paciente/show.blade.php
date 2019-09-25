@@ -11,11 +11,16 @@
 
 <div class="col-md-6">
 			<ul>
+				
 				<li><strong>Nome</strong> {{$paciente->nome}}</li>
 				<li><strong>email</strong> {{$paciente->email}}</li>
 				<li><strong>telefone</strong> {{$paciente->telefone}}</li>
 				<li><strong>sexo</strong> {{$paciente->sexo}}</li>
-				<li><strong>endereco</strong> {{$paciente->endereco}}</li>
+				<li><strong>CPF</strong> {{$paciente->cpf}}</li>
+				<li><strong>Rua</strong> {{$logradouro->rua}}</li>
+				<li><strong>Bairro</strong> {{$logradouro->bairro}}</li>
+				<li><strong>Cep</strong> {{$logradouro->cep}}</li>
+				<li><strong>Cidade</strong> {{$logradouro->cidade}}</li>
 				<li><strong>Adicionado em: </strong> {{date("d/m/Y H:i", strtotime($paciente->created_at))}}</li>
 			</ul>
 		</div>
