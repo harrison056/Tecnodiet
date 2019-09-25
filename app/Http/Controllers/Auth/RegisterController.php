@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\User;
+use App\Logradouro;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -67,6 +68,15 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+        $logradouro = Logradouro::create([
+            'rua' => $data['rua'],
+            'bairro' => $data['bairro'],
+            'cidade' => $data['cidade'],
+            'cep' => $data['cep']
+        ]);
+
+        $logradouro_id = $logradouro->id;
+
         return User::create([
             'name' => $data['name'],
             'email' => $data['email'],
@@ -74,7 +84,7 @@ class RegisterController extends Controller
             'telefone' => $data['tel'],
             'sexo' => $data['sexo'],
             'crn' => $data['crn'],
-            'endereco' => $data['endereco'],
+            'logradouro_id' => $logradouro_id,
             'qtdPaciente' => $data['qtdPaciente']
         ]);
     }

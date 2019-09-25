@@ -74,8 +74,20 @@
             <input type="text" class="form-control" id="crn" name="crn" placeholder="Digite CRN" required></input>
         </div>
         <div class="form-group mb-3">
-            <label for="descricao">Endereço</label>
-            <input type="text" class="form-control" id="endereco" name="endereco" placeholder="Digite endereco" required></input>
+            <label for="descricao">Cep</label>
+            <input type="text" class="form-control" id="cep" name="cep" placeholder="Digite endereco" required></input>
+        </div>
+        <div class="form-group mb-3">
+            <label for="descricao">Rua</label>
+            <input type="text" class="form-control" id="rua" name="rua" placeholder="Digite endereco" required></input>
+        </div>
+        <div class="form-group mb-3">
+            <label for="descricao">Bairro</label>
+            <input type="text" class="form-control" id="bairro" name="bairro" placeholder="Digite endereco" required></input>
+        </div>
+        <div class="form-group mb-3">
+            <label for="descricao">Cidade</label>
+            <input type="text" class="form-control" id="cidade" name="cidade" placeholder="Digite endereco" required></input>
         </div>
         <div class="form-group mb-3">
             <label for="descricao">Plano</label>

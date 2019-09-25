@@ -41,4 +41,8 @@ class User extends Authenticatable
     public function paciente(){
         return $this->belongsTo('App\Paciente');
     } 
+
+    public function endereco() {
+        return $this->hasOne('App\Logradouro', 'id', 'logradouro_id');
+    }
 }

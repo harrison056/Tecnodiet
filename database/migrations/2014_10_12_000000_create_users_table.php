@@ -23,9 +23,11 @@ class CreateUsersTable extends Migration
 
             $table->string('telefone');
             $table->string('sexo');
-            $table->string('endereco');
             $table->string('crn');
             $table->integer('qtdPaciente');
+
+            $table->integer('logradouro_id')->unsigned()->nullable();
+            $table->foreign('logradouro_id')->references('id')->on('logradouros');
             
             $table->timestamps();
         });

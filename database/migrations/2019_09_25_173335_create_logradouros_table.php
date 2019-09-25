@@ -15,6 +15,12 @@ class CreateLogradourosTable extends Migration
     {
         Schema::create('logradouros', function (Blueprint $table) {
             $table->bigIncrements('id');
+
+            $table->string('rua');
+            $table->string('bairro');
+            $table->string('cidade');
+            $table->integer('cep');
+
             $table->timestamps();
         });
     }

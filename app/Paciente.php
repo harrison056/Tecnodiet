@@ -10,6 +10,6 @@ class Paciente extends Model
 	protected $fillable = ['nome', 'email', 'telefone','sexo','endereco','cpf', 'user_id'];
 
     public function user(){
-    	return $this->hanOne('App\User');
+    	return $this->hanOne('App\User', 'id', 'user_id');
     } 
 }
