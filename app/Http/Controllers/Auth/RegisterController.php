@@ -55,8 +55,7 @@ class RegisterController extends Controller
             'password' => ['required', 'string', 'min:8', 'confirmed'],
             'tel' => ['required','numeric'],
             'sexo' => ['required'],
-            'crn' => ['required','numeric'],
-            'endereco' => ['required','string','max:255]']
+            'crn' => ['required','numeric']
         ]);
     }
 
@@ -68,15 +67,31 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        $logradouro = Logradouro::create([
-            'rua' => $data['rua'],
-            'bairro' => $data['bairro'],
-            'cidade' => $data['cidade'],
-            'cep' => $data['cep']
-        ]);
 
+        $logradouro = new Logradouro();
+        $logradouro->rua = $data['rua'];
+        $logradouro->bairro = $data['bairro'];
+        $logradouro->cidade = $data['cidade'];
+        $logradouro->cep = $data['cep'];
+        $logradouro->save();
+        
         $logradouro_id = $logradouro->id;
-
+        /*
+        $user = new User();
+        $user->name = $data['name'];
+        $user->email = $data['email'];
+        $user->password = Hash::make($data['password']);
+        $user->telefone = $data['tel'];
+        $user->sexo = $data['sexo'];
+        $user->crn = $data['crn'];
+        $user->logradouro_id = $logradouro->id;
+        $user->qtdPaciente = $data['qtdPaciente'];
+        
+        if($user->save()){
+            return redirect('nutricionista');
+        }
+        */
+        
         return User::create([
             'name' => $data['name'],
             'email' => $data['email'],
@@ -87,5 +102,7 @@ class RegisterController extends Controller
             'logradouro_id' => $logradouro_id,
             'qtdPaciente' => $data['qtdPaciente']
         ]);
+        
+
     }
 }

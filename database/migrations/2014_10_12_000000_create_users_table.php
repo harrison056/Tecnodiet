@@ -26,8 +26,7 @@ class CreateUsersTable extends Migration
             $table->string('crn');
             $table->integer('qtdPaciente');
 
-            $table->integer('logradouro_id')->unsigned()->nullable();
-            $table->foreign('logradouro_id')->references('id')->on('logradouros');
+            $table->integer('logradouro_id');
             
             $table->timestamps();
         });

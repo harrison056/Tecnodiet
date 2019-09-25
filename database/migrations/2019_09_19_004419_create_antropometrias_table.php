@@ -9,10 +9,7 @@ class CreateAntropometriasTable extends Migration
     /**
      * Run the migrations.
      *
-     * @return void$table->string('');
-     $table->string('');
-     $table->string('');
-     $table->string('');
+     * @return void
      */
     public function up()
     {
@@ -41,8 +38,7 @@ class CreateAntropometriasTable extends Migration
             $table->double('coxaDir');
             $table->double('coxaEsq');
 
-            $table->integer('paciente_id')->unsigned()->nullable();
-            $table->foreign('paciente_id')->references('id')->on('pacientes');
+            $table->integer('paciente_id');
 
             $table->timestamps();
         });
