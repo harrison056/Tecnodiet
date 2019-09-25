@@ -23,9 +23,21 @@
 		   	<input type="text" class="form-control" id="crn" name="crn"value="{{$nutricionista->crn}}" placeholder="Digite CRN" required></input>
 	 	</div>
 	 	<div class="form-group mb-3">
-		    <label for="descricao">Endereço</label>
-		   	<input type="text" class="form-control" id="endereco" name="endereco" value="{{$nutricionista->endereco}}" placeholder="Digite endereco" required></input>
-	 	</div>
+            <label for="descricao">Cep</label>
+            <input type="text" class="form-control" id="cep" name="cep" value="{{$logradouro->cep}}" placeholder="Digite endereco" required></input>
+        </div>
+        <div class="form-group mb-3">
+            <label for="descricao">Rua</label>
+            <input type="text" class="form-control" id="rua" name="rua" value="{{$logradouro->rua}}" placeholder="Digite endereco" required></input>
+        </div>
+        <div class="form-group mb-3">
+            <label for="descricao">Bairro</label>
+            <input type="text" class="form-control" id="bairro" name="bairro" value="{{$logradouro->bairro}}" placeholder="Digite endereco" required></input>
+        </div>
+        <div class="form-group mb-3">
+            <label for="descricao">Cidade</label>
+            <input type="text" class="form-control" id="cidade" name="cidade" value="{{$logradouro->cidade}}" placeholder="Digite endereco" required></input>
+        </div>
 	 	<div class="form-group mb-3">
 		    <label for="descricao">Plano</label>
 		   	<input type="text" class="form-control" id="qtdPaciente" value="{{$nutricionista->qtdPaciente}}" name="qtdPaciente" placeholder="Numero de pacientes" required></input>

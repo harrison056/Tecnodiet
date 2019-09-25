@@ -9,7 +9,7 @@
 	@endif
 
 <h1>Página Inicial</h1>
-<a href="nutricionista/{{Auth::user()->id}}/edit">Alterar Dados</a>
+<a href="{{Auth::user()->id}}/edit">Alterar Dados</a>
 <br>
 <a href="{{URL::to('paciente')}}">Lista de Pacientes</a>
 <br>

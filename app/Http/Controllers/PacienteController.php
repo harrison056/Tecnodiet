@@ -99,7 +99,9 @@ class PacienteController extends Controller
 	}
 
 	public function destroy($id){
-		Paciente::find($id)->delete();
+		$paciente = Paciente::find($id);
+		$paciente->delete();
+		Logradouro::find($paciente->logradouro_id)->delete();
 		return redirect('paciente/')->with('success','Paciente deletado com sucesso!');
 	}
 
