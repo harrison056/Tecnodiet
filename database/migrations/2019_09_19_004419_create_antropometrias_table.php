@@ -18,27 +18,28 @@ class CreateAntropometriasTable extends Migration
     {
         Schema::create('antropometrias', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('altura');
-            $table->string('peso'); 
-            $table->string('dtNascimento');
-            $table->string('bracoDirRelaxado');
-            $table->string('bracoEsqRelaxado');
-            $table->string('bracoDirContraido');
-            $table->string('bracoEsqContraido');
-            $table->string('antebracoDir');
-            $table->string('antebracoEsq');
-            $table->string('punhoDir');
-            $table->string('punhoEsq');
-            $table->string('pescoco');
-            $table->string('ombro');
-            $table->string('peitoral');
-            $table->string('cintura');
-            $table->string('abdomen');
-            $table->string('quadril');
-            $table->string('panturrilhaDir');
-            $table->string('panturrilhaEsq');
-            $table->string('coxaDir');
-            $table->string('coxaEsq');
+            
+            $table->double('altura');
+            $table->double('peso'); 
+            $table->date('dtNascimento');
+            $table->double('bracoDirRelaxado');
+            $table->double('bracoEsqRelaxado');
+            $table->double('bracoDirContraido');
+            $table->double('bracoEsqContraido');
+            $table->double('antebracoDir');
+            $table->double('antebracoEsq');
+            $table->double('punhoDir');
+            $table->double('punhoEsq');
+            $table->double('pescoco');
+            $table->double('ombro');
+            $table->double('peitoral');
+            $table->double('cintura');
+            $table->double('abdomen');
+            $table->double('quadril');
+            $table->double('panturrilhaDir');
+            $table->double('panturrilhaEsq');
+            $table->double('coxaDir');
+            $table->double('coxaEsq');
 
             $table->integer('paciente_id')->unsigned()->nullable();
             $table->foreign('paciente_id')->references('id')->on('pacientes');
