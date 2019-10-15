@@ -24,11 +24,11 @@ class CreateAntropometriasTable extends Migration
             $table->double('bracoDirContraido');
             $table->double('bracoEsqContraido');
             $table->double('antebracoDir');
-            $table->double('antebracoEsq');
+            $table->double('antebracoEsq'));
             $table->double('punhoDir');
             $table->double('punhoEsq');
             $table->double('pescoco');
-            $table->double('ombro');
+            $table->double('ombro'));
             $table->double('peitoral');
             $table->double('cintura');
             $table->double('abdomen');
@@ -38,7 +38,8 @@ class CreateAntropometriasTable extends Migration
             $table->double('coxaDir');
             $table->double('coxaEsq');
 
-            $table->integer('paciente_id');
+            $table->integer('paciente_id')->unsigned();
+            $table->foreingn('paciente_id')->references('id')->on('pacientes')->onDelete('cascade');
 
             $table->timestamps();
         });

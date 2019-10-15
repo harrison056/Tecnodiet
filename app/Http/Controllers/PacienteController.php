@@ -52,7 +52,7 @@ class PacienteController extends Controller
             'email' => $request['email'],
             'user_id' => Auth::user()->id
 		]);
-		//$paciente->user()->associate(Auth::user());
+		$paciente->antropometria()->create();
 		
 		if ($paciente->save()) {
 			return redirect('paciente/')->with('success', 'Paciente cadastrado com sucesso!');

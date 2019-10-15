@@ -23,7 +23,7 @@ class AntropometriaController extends Controller
      */
     public function create()
     {
-        //
+        return view('antropometria.create');
     }
 
     /**
