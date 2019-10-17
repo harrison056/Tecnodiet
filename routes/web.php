@@ -16,7 +16,10 @@ Route::get('/', function () {
 });
 
 Route::resource('/nutricionista','NutricionistaController')->middleware('auth');
+
 Route::resource('/paciente','PacienteController')->middleware('auth');
+
+Route::resource('/antropometria','AntropometriaController')->middleware('auth');
 
 Auth::routes();
 

@@ -16,31 +16,30 @@ class CreateAntropometriasTable extends Migration
         Schema::create('antropometrias', function (Blueprint $table) {
             $table->bigIncrements('id');
             
-            $table->double('altura');
-            $table->double('peso'); 
-            $table->date('dtNascimento');
-            $table->double('bracoDirRelaxado');
-            $table->double('bracoEsqRelaxado');
-            $table->double('bracoDirContraido');
-            $table->double('bracoEsqContraido');
-            $table->double('antebracoDir');
-            $table->double('antebracoEsq'));
-            $table->double('punhoDir');
-            $table->double('punhoEsq');
-            $table->double('pescoco');
-            $table->double('ombro'));
-            $table->double('peitoral');
-            $table->double('cintura');
-            $table->double('abdomen');
-            $table->double('quadril');
-            $table->double('panturrilhaDir');
-            $table->double('panturrilhaEsq');
-            $table->double('coxaDir');
-            $table->double('coxaEsq');
+            $table->double('altura')->nullable();
+            $table->double('peso')->nullable(); 
+            $table->date('dtNascimento')->nullable();
+            $table->double('bracoDirRelaxado')->nullable();
+            $table->double('bracoEsqRelaxado')->nullable();
+            $table->double('bracoDirContraido')->nullable();
+            $table->double('bracoEsqContraido')->nullable();
+            $table->double('antebracoDir')->nullable();
+            $table->double('antebracoEsq')->nullable();
+            $table->double('punhoDir')->nullable();
+            $table->double('punhoEsq')->nullable();
+            $table->double('pescoco')->nullable();
+            $table->double('ombro')->nullable();
+            $table->double('peitoral')->nullable();
+            $table->double('cintura')->nullable();
+            $table->double('abdomen')->nullable();
+            $table->double('quadril')->nullable();
+            $table->double('panturrilhaDir')->nullable();
+            $table->double('panturrilhaEsq')->nullable();
+            $table->double('coxaDir')->nullable();
+            $table->double('coxaEsq')->nullable();
 
             $table->integer('paciente_id')->unsigned();
-            $table->foreingn('paciente_id')->references('id')->on('pacientes')->onDelete('cascade');
-
+            
             $table->timestamps();
         });
     }
