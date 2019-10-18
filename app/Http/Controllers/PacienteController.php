@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Paciente;
 use App\User;
 use App\Logradouro;
+use App\Antropometria;
 use Illuminate\Support\Facades\Auth;
 
 class PacienteController extends Controller
@@ -18,7 +19,8 @@ class PacienteController extends Controller
     public function show($id){
     	$paciente = Paciente::find($id);
         $logradouro = Logradouro::find($paciente->logradouro_id);
-    	return view('paciente.show', array('paciente' => $paciente, 'logradouro' => $logradouro));
+        $antropometria = Antropometria::find($paciente->antropometria_id);
+    	return view('paciente.show', array('paciente' => $paciente, 'logradouro' => $logradouro, 'antropometria' => $antropometria));
 	}
 
 	public function create(){

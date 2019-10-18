@@ -8,37 +8,7 @@ use App\Antropometria;
 
 class AntropometriaController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        return view('antropometria.index'); 
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        return view('antropometria.create');
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        
-    }
-
+    
     /**
      * Display the specified resource.
      *
@@ -77,7 +47,7 @@ class AntropometriaController extends Controller
         $antropometria = Antropometria::find($paciente->antropometria_id);
 
         $antropometria->altura = $request->get('altura');
-        $antropometria->telefone = $request->get('peso');
+        $antropometria->peso = $request->get('peso');
         $antropometria->dtNascimento = $request->get('dtNascimento');
         $antropometria->bracoDirRelaxado = $request->get('bracoDirRelaxado');
         $antropometria->bracoEsqRelaxado = $request->get('bracoEsqRelaxado');
@@ -103,14 +73,4 @@ class AntropometriaController extends Controller
         }
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
-    }
 }
