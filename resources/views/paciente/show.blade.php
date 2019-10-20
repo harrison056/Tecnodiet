@@ -35,7 +35,9 @@
 	<br>
 	<a href="{{URL::to('paciente/' .$paciente->id. '/edit')}}">Editar Cadastro</a>
 	<br>
-	<a href="{{URL::to('antropometria/' .$paciente->id. '/edit')}}">Antropometria</a>
+	<a href="{{URL::to('antropometria/' .$paciente->id. '/edit')}}">Cadastrar Antropometria</a>
+	<br>
+	<a href="{{URL::to('antropometria/' .$paciente->id)}}">Antropometria</a>
 	<br>
 	<a href="javascript:history.go(-1)">Voltar</a>
 

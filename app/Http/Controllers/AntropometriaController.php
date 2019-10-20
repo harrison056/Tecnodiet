@@ -16,7 +16,8 @@ class AntropometriaController extends Controller
      */
     public function show($id)
     {
-        //
+        $antropometria = Antropometria::where('paciente_id', 'LIKE', $id);
+        return view('antropometria.show', array('antropometria' => $antropometria));
     }
 
     /**
