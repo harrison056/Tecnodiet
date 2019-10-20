@@ -56,7 +56,7 @@ class PacienteController extends Controller
 		]);
 
 		$paciente->antropometria()->create(); //Cria Antropometria
-		$paciente->dieta()->create(); //Cria Dieta
+		//$paciente->dieta()->create(); //Cria Dieta
 		
 		if ($paciente->save()) {
 			return redirect('paciente/')->with('success', 'Paciente cadastrado com sucesso!');

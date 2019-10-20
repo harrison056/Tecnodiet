@@ -21,6 +21,8 @@ Route::resource('/paciente','PacienteController')->middleware('auth');
 
 Route::resource('/antropometria','AntropometriaController')->middleware('auth');
 
+Route::post('/paciente/busca', 'PacienteController@busca');
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
