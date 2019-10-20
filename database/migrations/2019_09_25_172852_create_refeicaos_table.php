@@ -15,6 +15,12 @@ class CreateRefeicaosTable extends Migration
     {
         Schema::create('refeicaos', function (Blueprint $table) {
             $table->bigIncrements('id');
+
+            $table->time('hora');
+            $table->string('descricao');
+
+            $table->integer('alimento_id')->unsigned();
+
             $table->timestamps();
         });
     }

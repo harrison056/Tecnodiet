@@ -54,7 +54,9 @@ class PacienteController extends Controller
             'email' => $request['email'],
             'user_id' => Auth::user()->id
 		]);
-		$paciente->antropometria()->create();
+
+		$paciente->antropometria()->create(); //Cria Antropometria
+		$paciente->dieta()->create(); //Cria Dieta
 		
 		if ($paciente->save()) {
 			return redirect('paciente/')->with('success', 'Paciente cadastrado com sucesso!');

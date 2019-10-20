@@ -13,4 +13,8 @@ class Paciente extends Model
     public function antropometria(){
         return $this->hasOne('App\Antropometria');
     }
+
+    public function dieta(){
+        return $this->hasOne('App\Dieta');
+    }
 }
