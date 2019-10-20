@@ -104,8 +104,13 @@ class PacienteController extends Controller
 
 	public function destroy($id){
 		$paciente = Paciente::find($id);
+		$logradouro = Logradouro::find($paciente->logradouro_id);
+		$antropometria = Antropometria::where('paciente_id', 'LIKE', $id);
+
 		$paciente->delete();
-		Logradouro::find($paciente->logradouro_id)->delete();
+		$logradouro->delete();
+		$antropometria->delete();
+		
 		return redirect('paciente/')->with('success','Paciente deletado com sucesso!');
 	}
 

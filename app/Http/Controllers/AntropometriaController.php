@@ -8,7 +8,6 @@ use App\Antropometria;
 
 class AntropometriaController extends Controller
 {
-    
     /**
      * Display the specified resource.
      *
@@ -28,9 +27,8 @@ class AntropometriaController extends Controller
      */
     public function edit($id)
     {
-        $paciente = Paciente::find($id);
-        $antropometria = Antropometria::find($paciente->antropometria_id);
-        return view('antropometria.edit', compact('paciente', 'id'), array('antropometria' => $antropometria));
+        $antropometria = Antropometria::where('paciente_id', 'LIKE', $id);
+        return view('antropometria.edit', compact('antropometria', 'id'), array('antropometria' => $antropometria));
     }
 
     /**
@@ -42,9 +40,9 @@ class AntropometriaController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $paciente = Paciente::find($id);
+        //$paciente = Paciente::find($id);
 
-        $antropometria = Antropometria::find($paciente->antropometria_id);
+        $antropometria = Antropometria::find($id);
 
         $antropometria->altura = $request->get('altura');
         $antropometria->peso = $request->get('peso');
