@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'title' => 'AdminLTE 2',
+    'title' => 'Tecnodiet',
 
     'title_prefix' => '',
 
@@ -30,9 +30,9 @@ return [
     |
     */
 
-    'logo' => '<b>Admin</b>LTE',
+    'logo' => '<b>Tecno</b>Diet',
 
-    'logo_mini' => '<b>A</b>LT',
+    'logo_mini' => '<b>T</b>D',
 
     /*
     |--------------------------------------------------------------------------
@@ -45,7 +45,7 @@ return [
     |
     */
 
-    'skin' => 'blue',
+    'skin' => 'green',
 
     /*
     |--------------------------------------------------------------------------
@@ -139,10 +139,9 @@ return [
             'can'  => 'manage-blog',
         ],
         [
-            'text'        => 'pages',
-            'url'         => 'admin/pages',
-            'icon'        => 'far fa-file',
-            'label'       => 4,
+            'text'        => 'Pacientes',
+            'url'         => '/paciente',
+            'icon'        => 'fas fa-fw fa-user',
             'label_color' => 'success',
         ],
         ['header' => 'account_settings'],
@@ -193,19 +192,6 @@ return [
                     'url'  => '#',
                 ],
             ],
-        ],
-        ['header' => 'labels'],
-        [
-            'text'       => 'important',
-            'icon_color' => 'red',
-        ],
-        [
-            'text'       => 'warning',
-            'icon_color' => 'yellow',
-        ],
-        [
-            'text'       => 'information',
-            'icon_color' => 'aqua',
         ],
     ],
 

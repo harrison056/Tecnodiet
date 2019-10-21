@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('adminlte::page')
 
 @section('content')
 <h1>{{$paciente->nome}}</h1>
@@ -23,15 +23,14 @@
 				<li><strong>Cidade</strong> {{$logradouro->cidade}}</li>
 				<li><strong>Adicionado em: </strong> {{date("d/m/Y H:i", strtotime($paciente->created_at))}}</li>
 			</ul>
-		</div>
-	</div>
-
-
-	<form method="POST" action="{{action('PacienteController@destroy', $paciente->id)}}">
+</div>
+		<form method="POST" action="{{action('PacienteController@destroy', $paciente->id)}}">
 		@csrf
 		<input type="hidden" name="_method" value="DELETE">
 		<button class="btn btn-primary">Excluir</button>
 	</form>
+	</div>
+
 	<br>
 	<a href="{{URL::to('paciente/' .$paciente->id. '/edit')}}">Editar Cadastro</a>
 	<br>
