@@ -10,7 +10,7 @@
 @section('body')
     <div class="login-box">
         <div class="login-logo">
-            <a href="{{ url(config('adminlte.dashboard_url', 'home')) }}">{!! config('adminlte.logo', '<b>Admin</b>LTE') !!}</a>
+            <a href="/">{!! config('adminlte.logo', '<b>Admin</b>LTE') !!}</a>
         </div>
         <!-- /.login-logo -->
         <div class="login-box-body">
@@ -63,7 +63,7 @@
             @if (config('adminlte.register_url', 'register'))
                 <p>
                     <a href="{{ url(config('adminlte.register_url', 'register')) }}" class="text-center">
-                        {{ trans('adminlte::adminlte.register_a_new_membership') }}
+                        Realizar novo cadastro
                     </a>
                 </p>
             @endif

@@ -106,7 +106,7 @@ return [
     |
     */
 
-    'dashboard_url' => 'home',
+    'dashboard_url' => 'nutricionista',
 
     'logout_url' => 'logout',
 

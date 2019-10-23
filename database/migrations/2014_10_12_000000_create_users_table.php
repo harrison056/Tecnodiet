@@ -22,7 +22,6 @@ class CreateUsersTable extends Migration
             $table->rememberToken();
 
             $table->string('telefone');
-            $table->string('sexo');
             $table->string('crn');
             $table->integer('qtdPaciente');
 

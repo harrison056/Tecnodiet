@@ -9,7 +9,7 @@
 @section('body')
     <div class="register-box">
         <div class="register-logo">
-            <a href="{{ url(config('adminlte.dashboard_url', 'home')) }}">{!! config('adminlte.logo', '<b>Admin</b>LTE') !!}</a>
+            <a href="/">{!! config('adminlte.logo', '<b>Admin</b>LTE') !!}</a>
         </div>
 
         <div class="register-box-body">
@@ -61,15 +61,15 @@
                     <input type="text" name="tel" class="form-control" value="{{ old('tel') }}"
                            placeholder="Telefone">
                     <span class="glyphicon glyphicon-earphone form-control-feedback"></span>
-                    
-                    <script type="text/javascript" src="js/jquery.min.js"></script>
-                    <script type="text/javascript" src="{{ URL::asset('js/masked-telefone.js') }}"></script>
+
                     @if ($errors->has('tel'))
                         <span class="help-block">
                             <strong>{{ $errors->first('tel') }}</strong>
                         </span>
                     @endif
                 </div>
+                <script type="text/javascript" src="js/jquery.min.js"></script>
+                <script type="text/javascript" src="{{ URL::asset('public/js/masked-telefone.js') }}"></script>
 
                 <div class="form-group has-feedback {{ $errors->has('crn') ? 'has-error' : '' }}">
                     <input type="text" name="crn" class="form-control" value="{{ old('crn') }}"

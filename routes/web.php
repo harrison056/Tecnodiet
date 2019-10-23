@@ -26,6 +26,7 @@ Route::post('/paciente/busca', 'PacienteController@busca');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
