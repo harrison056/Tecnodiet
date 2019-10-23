@@ -30,10 +30,7 @@
 		    	<label for="titulo"><h4><b>Peso</b></h4></label>
 		    	<input type="number" class="form-control" id="peso" name="peso" placeholder="0,00">
 		    </div>
-		    <div class="col-md-5">
-		    	<label for="descricao"><h4><b>Data Nascimento</b></h4></label>
-		   		<input type="date" class="form-control" id="dtNascimento " name="dtNascimento "placeholder="0,00"></input>
-		   	</div>
+		    
 	 	</div>
 
 	 	<div class="box-body">

@@ -17,8 +17,7 @@ class CreateAntropometriasTable extends Migration
             $table->bigIncrements('id');
             
             $table->double('altura')->nullable();
-            $table->double('peso')->nullable(); 
-            $table->date('dtNascimento')->nullable();
+            $table->double('peso')->nullable();
             $table->double('bracoDirRelaxado')->nullable();
             $table->double('bracoEsqRelaxado')->nullable();
             $table->double('bracoDirContraido')->nullable();

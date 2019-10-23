@@ -29,12 +29,20 @@
 		    </div>
 	 	</div>
 	 	<div class="box-body">
-	 		<div class="col-md-6">
+	 		<div class="col-md-4">
 		    	<label for="titulo"><h4><b>Telefone</b></h4></label>
 		    	<input type="text" class="form-control" id="tel" name="tel" placeholder="(xx) xxxxx-xxxx" required>
 		    </div>
+
 		    <div>
-		    	<div class="form-group">
+		    	<div class="col-md-4">
+		    		<label for="descricao"><h4><b>Data Nascimento</b></h4></label>
+		   			<input type="date" class="form-control" id="dtNascimento " name="dtNascimento "placeholder="0,00"></input>
+		    	</div>
+		    </div>
+		    
+		    <div>
+		    	<div class="col-md-4">
 		   			<label for="titulo"><h4><b>Sexo</b></h4></label>
 		   			<br>
                 	<label>

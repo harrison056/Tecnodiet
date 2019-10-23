@@ -29,7 +29,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected $redirectTo = '/nutricionista';
 
     /**
      * Create a new controller instance.
@@ -54,7 +54,6 @@ class RegisterController extends Controller
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
             'tel' => ['required','numeric'],
-            'sexo' => ['required'],
             'crn' => ['required','numeric']
         ]);
     }
@@ -80,7 +79,6 @@ class RegisterController extends Controller
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
             'telefone' => $data['tel'],
-            'sexo' => $data['sexo'],
             'crn' => $data['crn'],
             'logradouro_id' => $logradouro->id,
             'qtdPaciente' => $data['qtdPaciente']

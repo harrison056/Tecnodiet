@@ -20,6 +20,7 @@ class CreatePacientesTable extends Migration
             $table->string('telefone');
             $table->boolean('sexo');
             $table->string('cpf');
+            $table->date('dtNascimento');
 
             $table->integer('user_id');
 
