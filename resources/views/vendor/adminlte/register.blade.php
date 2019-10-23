@@ -126,11 +126,14 @@
                     @endif
                 </div>
                 
-                <div >
-                    <form>
-                        
-                    </form>
-                </div>
+                <div class="form-group">
+                <select class="form-control select2" style="width: 100%;">
+                  <option selected="selected" disabled="disabled">Escolha um plano</option>
+                  <option>Grátis - 10 Pacientes</option>
+                  <option>R$ 29,9 - 500 Pacientes</option>
+                  <option>R$ 99,90 - 5000 Pacientes</option>
+                </select>
+              </div>
 
                 <button type="submit" class="btn btn-primary btn-block btn-flat">
                     {{ trans('adminlte::adminlte.register') }}
