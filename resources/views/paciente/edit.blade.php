@@ -2,59 +2,95 @@
 @section('title','Tecnodiet - Editar Cadastro Paciente')
 @section('content')
 
-<h1>Editar cadastro de Paciente</h1>
+<div class="box box-success">
 
-@if(count($errors)>0)
-	<div class="alert alert-danger">
-		<ul>
-			@foreach($errors->all() as $error)
-			<li>{{$error}}</li>
-			@endforeach
-		</ul>
-	</div>
-@endif
+    <div class="box-header with-border">
+        <h3 class="box-title"><b>Editar Cadastro Paciente</b></h3>			
+    </div>
+    <div class="box-body">
 
-<form method="POST" enctype="multipart/form-data" action="{{action('PacienteController@update', $id)}}">
+    	@if(count($errors)>0)
+		<div class="alert alert-danger">
+			<ul>
+				@foreach($errors->all() as $error)
+				<li>{{$error}}</li>
+				@endforeach
+			</ul>
+		</div>
+		@endif
+
+        <form method="POST" enctype="multipart/form-data" action="{{action('PacienteController@update', $id)}}">
 		@csrf
 		<input type="hidden" name="_method" value="PATCH">
-		<div class="form-group mb-3">
-		    <label for="sku">Nome</label>
-		    <input type="text" class="form-control" id="nome" name="nome" value="{{$paciente->nome}}" placeholder="Nome" required>
+		<div class="box-body">
+			<div class="col-md-12">
+		    	<label for="sku"><h4><b>Nome</b></h4></label>
+		    	<input type="text" class="form-control" id="nome" name="nome" value="{{$paciente->nome}}" required>
+		    </div>
 	 	</div>
-	 	<div class="form-group mb-3">
-		    <label for="titulo">Telefone</label>
-		    <input type="text" class="form-control" id="tel" name="tel" value="{{$paciente->telefone}}" placeholder="(xx) xxxxx-xxxx" required>
+	 	<div class="box-body">
+	 		<div class="col-md-6">
+		    	<label for="titulo"><h4><b>Telefone</b></h4></label>
+		    	<input type="text" class="form-control" id="tel" name="tel" value="{{$paciente->telefone}}" required>
+		    </div>
+		    <div>
+		    	<div class="form-group">
+		   			<label for="titulo"><h4><b>Sexo</b></h4></label>
+		   			<br>
+                	<label>
+                	  <input type="radio" name="sexo" value="true">
+                	  <label for="descricao">Masculino</label>
+                	</label>
+                	
+                	<label>
+                	  <input type="radio" name="sexo" value="false">
+                	  <label for="descricao">Feminino</label>
+                	</label>
+		    	</div>
+	 		</div>
+	 	
 	 	</div>
-	 	<div class="form-group mb-3">
-		    <label for="descricao">Sexo</label>
-		   	<input type="text" class="form-control" id="sexo" name="sexo" value="{{$paciente->sexo}}" placeholder="Sexo" required></input>
-	 	</div>
-	 	<div class="form-group mb-3">
-		    <label for="descricao">CPF</label>
-		   	<input type="text" class="form-control" id="cpf" name="cpf" value="{{$paciente->cpf}}" placeholder="CPF" required></input>
-	 	</div>
-	 	<div class="form-group mb-3">
-            <label for="descricao">Cep</label>
-            <input type="text" class="form-control" id="cep" name="cep" value="{{$logradouro->cep}}" placeholder="Digite endereco" required></input>
-        </div>
-        <div class="form-group mb-3">
-            <label for="descricao">Rua</label>
-            <input type="text" class="form-control" id="rua" name="rua" value="{{$logradouro->rua}}" placeholder="Digite endereco" required></input>
-        </div>
-        <div class="form-group mb-3">
-            <label for="descricao">Bairro</label>
-            <input type="text" class="form-control" id="bairro" name="bairro" value="{{$logradouro->bairro}}" placeholder="Digite endereco" required></input>
-        </div>
-        <div class="form-group mb-3">
-            <label for="descricao">Cidade</label>
-            <input type="text" class="form-control" id="cidade" name="cidade" value="{{$logradouro->cidade}}" placeholder="Digite endereco" required></input>
-        </div>
-	 	<div class="form-group mb-3">
-		    <label for="descricao">E-mail</label>
-		   	<input type="text" class="form-control" id="email" name="email" value="{{$paciente->email}}" placeholder="E-mail" required></input>
-	 	</div>
-	 	<button type="submit" class="btn btn-primary">Alterar</button>
-	</form>
 
+	 	<div class="box-body">
+	 		<div class="col-md-6">
+		    	<label for="descricao"><h4><b>CPF</b></h4></label>
+		   		<input type="text" class="form-control" id="cpf" name="cpf" value="{{$paciente->cpf}}" required></input>
+		   	</div>
+		   	<div class="col-md-6">
+		   		<label for="descricao"><h4><b>E-mail</b></h4></label>
+		   		<input type="text" class="form-control" id="email" name="email" value="{{$paciente->email}}" required></input>
+		   	</div>
+	 	</div>
+	 	<div class="box-body">
+	 		<div class="col-md-6">
+	 			<label for="descricao"><h4><b>Cep</b></h4></label>
+            	<input type="text" class="form-control" id="cep" name="cep" value="{{$logradouro->cep}}" required></input>
+        	</div>
+        	<div class="col-md-6">
+        		<label for="descricao"><h4><b>Rua</b></h4></label>
+            	<input type="text" class="form-control" id="rua" name="rua" value="{{$logradouro->rua}}" required></input>
+        	</div>
+	 	</div>
+            
+        <div class="box-body">
+        	<div class="col-md-6">
+        		<label for="descricao"><h4><b>Bairro</b></h4></label>
+            	<input type="text" class="form-control" id="bairro" name="bairro" value="{{$logradouro->bairro}}" required></input>
+        	</div>
+            <div class="col-md-6">
+            	<label for="descricao"><h4><b>Cidade</b></h4></label>
+            	<input type="text" class="form-control" id="cidade" name="cidade"value="{{$logradouro->cidade}}" required></input>
+            </div>
+        </div>
+        <br>
+        <div>
+        	<div class="col-md-6">
+        	<button type="submit" class="btn btn-success">Cadastrar</button>
+	 		</div>
+        </div>
+	</form>
+    </div>
+    <!-- /.box-body -->
+</div>
 
 @endsection
