@@ -37,21 +37,21 @@
 		    <div>
 		    	<div class="col-md-4">
 		    		<label for="descricao"><h4><b>Data Nascimento</b></h4></label>
-		   			<input type="date" class="form-control" id="dtNascimento " name="dtNascimento "placeholder="0,00"></input>
+		   			<input type="text" class="form-control" id="dtNascimento " name="dtNascimento "></input>
 		    	</div>
 		    </div>
-		    
+
 		    <div>
 		    	<div class="col-md-4">
 		   			<label for="titulo"><h4><b>Sexo</b></h4></label>
 		   			<br>
                 	<label>
-                	  <input type="radio" name="sexo" value="true">
+                	  <input type="radio" name="sexo" value="1">
                 	  <label for="descricao">Masculino</label>
                 	</label>
                 	
                 	<label>
-                	  <input type="radio" name="sexo" value="false">
+                	  <input type="radio" name="sexo" value="0">
                 	  <label for="descricao">Feminino</label>
                 	</label>
 		    	</div>

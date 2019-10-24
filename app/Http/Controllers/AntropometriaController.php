@@ -66,6 +66,8 @@ class AntropometriaController extends Controller
         $antropometria->panturrilhaEsq = $request->get('panturrilhaEsq');
         $antropometria->coxaDir = $request->get('coxaDir');
         $antropometria->coxaEsq = $request->get('coxaEsq');
+        $antropometria->punho = $request->get('punho');
+        $antropometria->femur = $request->get('femur');
 
         if ($antropometria->save()) {
             return redirect('paciente/' .$id)->with('success', 'Alterações realizadas com sucesso!');

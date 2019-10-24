@@ -7,7 +7,9 @@ use App\User;
 
 class Paciente extends Model
 {
-	protected $fillable = ['nome', 'email', 'telefone','sexo','endereco','cpf', 'user_id', 'logradouro_id'];
+	protected $fillable = ['nome', 'email', 'telefone','sexo', 'dtNascimento','endereco','cpf', 'user_id', 'logradouro_id'];
+
+	//protected $dates = ['dtNascimento'=> 'm-d-Y'];
 
    
     public function antropometria(){

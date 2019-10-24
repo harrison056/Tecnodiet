@@ -48,6 +48,7 @@ class PacienteController extends Controller
 		$paciente = Paciente::create([
 			'nome' => $request['nome'],
             'telefone' => $request['tel'],
+            'dtNascimento' => $request['dtNascimento'],
             'sexo' => $request['sexo'],
             'cpf' => $request['cpf'],
             'logradouro_id' => $logradouro->id,
@@ -60,6 +61,8 @@ class PacienteController extends Controller
 		
 		if ($paciente->save()) {
 			return redirect('paciente/')->with('success', 'Paciente cadastrado com sucesso!');
+		}else{
+			$logradouro->delete();
 		}
 		
 	}

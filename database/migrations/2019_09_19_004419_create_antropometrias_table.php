@@ -36,6 +36,8 @@ class CreateAntropometriasTable extends Migration
             $table->double('panturrilhaEsq')->nullable();
             $table->double('coxaDir')->nullable();
             $table->double('coxaEsq')->nullable();
+            $table->double('punho')->nullable();
+            $table->double('femur')->nullable();
 
             $table->integer('paciente_id')->unsigned();
             
