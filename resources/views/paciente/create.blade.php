@@ -37,7 +37,7 @@
 		    <div>
 		    	<div class="col-md-4">
 		    		<label for="descricao"><h4><b>Data Nascimento</b></h4></label>
-		   			<input type="text" class="form-control" id="dtNascimento " name="dtNascimento "></input>
+		   			<input type="text" class="form-control" id="dtNascimento" name="dtNascimento"></input>
 		    	</div>
 		    </div>
 

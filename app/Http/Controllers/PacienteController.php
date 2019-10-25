@@ -33,6 +33,7 @@ class PacienteController extends Controller
 		$this->validate($request,[
             'nome' => 'required|max:255',
             'tel' => 'required|numeric',
+            'dtNascimento'=> 'required',
             'sexo' => 'required',
             'cpf' => 'required|numeric',
             'email' => 'required|max:255|unique:pacientes'

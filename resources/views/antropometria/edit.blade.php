@@ -141,7 +141,7 @@
 		    	<input type="number" class="form-control" id="punho" name="punho" placeholder="0,00">
 		    </div>
 		    <div class="col-md-3">
-		    	<label for="titulo"><h4>Femur</h4></label>
+		    	<label for="titulo"><h4>Fêmur</h4></label>
 		    	<input type="number" class="form-control" id="femur" name="femur" placeholder="0,00">
 		    </div>
 	 	</div>
