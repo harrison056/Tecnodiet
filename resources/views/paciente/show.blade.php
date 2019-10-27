@@ -10,22 +10,26 @@
 
 <div class="box box-success">
 	<div class="box-header with-border">
-        <h3 class="box-title"><b>{{$paciente->nome}}</b></h3>	
+        <h2 class="box-title"><b>{{$paciente->nome}}</b></h2>	
     </div>
 
     <div class="box-body">
     	<div class="col-md-8">
     		<ul>
-				<li><strong>email</strong> {{$paciente->email}}</li>
-				<li><strong>telefone</strong> {{$paciente->telefone}}</li>
-				<li><strong>sexo</strong> {{$paciente->sexo}}</li>
-				<li><strong>CPF</strong> {{$paciente->cpf}}</li>
-				<li><strong>Rua</strong> {{$logradouro->rua}}</li>
-				<li><strong>Bairro</strong> {{$logradouro->bairro}}</li>
-				<li><strong>Cep</strong> {{$logradouro->cep}}</li>
-				<li><strong>Cidade</strong> {{$logradouro->cidade}}</li>
-				<li><strong>Adicionado em: </strong> {{date("d/m/Y H:i", strtotime($paciente->created_at))}}</li>
-				<li><strong>Última atualização: </strong> {{date("d/m/Y H:i", strtotime($paciente->updated_at))}}</li>
+				<h4><strong>Email</strong> {{$paciente->email}}</h4>
+				<h4><strong>Telefone</strong> {{$paciente->telefone}}</h4>
+                @if($paciente->sexo == 1)
+				<h4><strong>Sexo</strong> Masculino</h4>
+                @else
+                <h4><strong>Sexo</strong> Feminino</h4>
+                @endif
+				<h4><strong>CPF</strong> {{$paciente->cpf}}</h4>
+				<h4><strong>Rua</strong> {{$logradouro->rua}}</h4>
+				<h4><strong>Bairro</strong> {{$logradouro->bairro}}</h4>
+				<h4><strong>Cep</strong> {{$logradouro->cep}}</h4>
+				<h4><strong>Cidade</strong> {{$logradouro->cidade}}</h4>
+				<h4><strong>Adicionado em: </strong> {{date("d/m/Y H:i", strtotime($paciente->created_at))}}</h4>
+				<h4><strong>Última atualização: </strong> {{date("d/m/Y H:i", strtotime($paciente->updated_at))}}</h4>
 			</ul>
     	</div>
 

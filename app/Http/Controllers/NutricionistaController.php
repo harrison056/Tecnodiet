@@ -21,7 +21,8 @@ class NutricionistaController extends Controller
 
     public function show($id){
         $nutricionista = User::find($id);
-        return view('nutricionista.show', array('nutricionista' => $nutricionista));
+        $logradouro = Logradouro::find($nutricionista->logradouro_id);
+        return view('nutricionista.show', array('nutricionista' => $nutricionista, 'logradouro' => $logradouro));
     }
 
     public function edit($id)
@@ -29,7 +30,7 @@ class NutricionistaController extends Controller
         $nutricionista = User::find($id);
         $logradouro = Logradouro::find($nutricionista->logradouro_id);
         if ($nutricionista->id == Auth::user()->id) {
-            return view('nutricionista.edit', compact('nutricionista', 'id'), array('logradouro' => $logradouro));
+            return view('nutricionista.edit', compact('nutricionista', 'id'), array('nutricionista' => $nutricionista, 'logradouro' => $logradouro));
         }else{
             return view('nutricionista.index'); 
         }
@@ -44,15 +45,13 @@ class NutricionistaController extends Controller
         $this->validate($request,[
             'name' => 'required|max:255',
             'tel' => 'required|numeric',
-            'sexo' => 'required',
             'crn' => 'required|numeric'
         ]);
 
         $user->name = $request->get('name');
         $user->telefone = $request->get('tel');
-        $user->sexo = $request->get('sexo');
         $user->crn = $request->get('crn');
-        $user->qtdPaciente = $request->get('qtdPaciente');
+        $user->email = $request->get('email');
         $logradouro->rua = $request->get('rua');
         $logradouro->bairro = $request->get('bairro');
         $logradouro->cidade = $request->get('cidade');

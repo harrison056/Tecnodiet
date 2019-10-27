@@ -78,16 +78,17 @@ class PacienteController extends Controller
 
 	public function update(Request $request, $id){
 
-		/*
 		$this->validate($request,[
             'nome' => 'required|max:255',
             'tel' => 'required|numeric',
             'sexo' => 'required',
-            'cpf' => 'required|numeric',
-            'endereco' => 'required',
+            'cpf' => 'required|numeric|unique:pacientes',
+            'rua' => 'required',
+            'bairro' => 'required',
+            'cidade' => 'required',
+            'cep' => 'required',
             'email' => 'required|max:255|unique:pacientes'
         ]);
-		*/
         $paciente = Paciente::find($id);
 
         $logradouro = Logradouro::find($paciente->logradouro_id);
