@@ -29,23 +29,42 @@
 		    </div>
 	 	</div>
 	 	<div class="box-body">
-	 		<div class="col-md-6">
+	 		<div class="col-md-4">
 		    	<label for="titulo"><h4><b>Telefone</b></h4></label>
 		    	<input type="text" class="form-control" id="tel" name="tel" value="{{$paciente->telefone}}" required>
 		    </div>
+
+		    <div>
+		    	<div class="col-md-4">
+		    		<label for="descricao"><h4><b>Data Nascimento</b></h4></label>
+		   			<input type="text" class="form-control" id="dtNascimento" name="dtNascimento"
+		   			value="{{$paciente->dtNascimento}}"></input>
+		    	</div>
+		    </div>
+
 		    <div>
 		    	<div class="form-group">
+		    		<div class="col-md-4">
 		   			<label for="titulo"><h4><b>Sexo</b></h4></label>
 		   			<br>
                 	<label>
-                	  <input type="radio" name="sexo" value="true">
-                	  <label for="descricao">Masculino</label>
+                		@if($paciente->sexo == 1)
+                	  	<input type="radio" name="sexo" value="1" class="flat-red" checked>
+                	  	@else
+                	  	<input type="radio" name="sexo" value="1" class="flat-red">
+                	  	@endif
+                	  	<label for="descricao">Masculino</label>
                 	</label>
                 	
                 	<label>
-                	  <input type="radio" name="sexo" value="false">
-                	  <label for="descricao">Feminino</label>
+                		@if($paciente->sexo == 0)
+                	  	<input type="radio" name="sexo" value="0" class="flat-red" checked>
+                		@else
+                	  	<input type="radio" name="sexo" value="0" class="flat-red">
+                	  	@endif
+                	  	<label for="descricao">Feminino</label>
                 	</label>
+                	</div>
 		    	</div>
 	 		</div>
 	 	

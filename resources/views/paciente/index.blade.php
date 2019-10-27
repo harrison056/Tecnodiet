@@ -30,6 +30,12 @@
 </div>
 <br>
   
+<div class="row">	
+	<div class="col-md-8">
+		<a href="{{URL::to('paciente')}}/create"><button class="btn btn-success">Add Paciente</button></a>
+	</div>
+</div>
+<br>	
 @foreach($paciente as $pacientes)
 
 <div class="box box-success">
