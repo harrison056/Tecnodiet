@@ -123,9 +123,8 @@ class PacienteController extends Controller
 
 	public function busca(Request $request){
 		$paciente = Paciente::where('nome', 'LIKE', '%'.$request->input('busca').'%')
-		->orwhere('email', 'LIKE', '%'.$request->input('busca').'%')
-		->orwhere('cpf', 'LIKE', '%'.$request->input('busca').'%')
-		->paginate();
+		->where('user_id', 'LIKE', Auth::user()->id)
+		->paginate(10);
 
 		return view('paciente.index', array('paciente' => $paciente, 'buscar' => $request->input('busca')));
 	}
