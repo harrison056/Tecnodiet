@@ -12,7 +12,8 @@ use Illuminate\Support\Facades\Auth;
 class PacienteController extends Controller
 {
     public function index(){
-    	$paciente = Paciente::where('user_id', 'LIKE', Auth::user()->id)->paginate();
+    	$paciente = Paciente::where('user_id', 'LIKE', Auth::user()->id)
+    	->paginate();
     	return view('paciente.index', array('paciente'=> $paciente, 'buscar' => null));
     }
 

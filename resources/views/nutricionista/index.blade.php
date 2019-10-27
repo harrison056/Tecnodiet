@@ -63,12 +63,11 @@
                 @foreach($paciente as $pacientes)
                 <li>
                     @if($pacientes->sexo == 1)
-					<img src="{{url('img/Homem.jpg')}}" alt="User Image" style="width:250; height:110px;">
+					   <img src="{{url('img/Homem.jpg')}}" alt="User Image" style="width:250; height:110px;">
                     @else
-                    <img src="{{url('img/Mulher.jpg')}}" alt="User Image" style="width:250; height:110px;">
+                        <img src="{{url('img/Mulher.jpg')}}" alt="User Image" style="width:250; height:110px;">
                     @endif
-                    <a class="users-list-name" href="{{URL::to('paciente')}}/{{$pacientes->id}}">{{$pacientes->nome}}</a>
-                    <span class="users-list-date">Today</span>
+                        <a class="users-list-name" href="{{URL::to('paciente')}}/{{$pacientes->id}}">{{$pacientes->nome}}</a>
                 </li>
                 @endforeach
                 <li>

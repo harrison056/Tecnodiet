@@ -16,8 +16,12 @@ class AntropometriaController extends Controller
      */
     public function show($id)
     {
-        $antropometria = Antropometria::where('paciente_id', 'LIKE', $id);
-        return view('antropometria.show', array('antropometria' => $antropometria));
+        $antropometria = Antropometria::find($id);
+        if($antropometria->peso == null){
+            return view('antropometria.edit', compact('antropometria', 'id'), array('antropometria' => $antropometria));
+        }else{
+            return view('antropometria.show', array('antropometria' => $antropometria));
+        }
     }
 
     /**
@@ -41,13 +45,12 @@ class AntropometriaController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //$paciente = Paciente::find($id);
+        $paciente = Paciente::find($id);
 
         $antropometria = Antropometria::find($id);
 
         $antropometria->altura = $request->get('altura');
         $antropometria->peso = $request->get('peso');
-        $antropometria->dtNascimento = $request->get('dtNascimento');
         $antropometria->bracoDirRelaxado = $request->get('bracoDirRelaxado');
         $antropometria->bracoEsqRelaxado = $request->get('bracoEsqRelaxado');
         $antropometria->bracoDirContraido = $request->get('bracoDirContraido');
@@ -68,6 +71,20 @@ class AntropometriaController extends Controller
         $antropometria->coxaEsq = $request->get('coxaEsq');
         $antropometria->punho = $request->get('punho');
         $antropometria->femur = $request->get('femur');
+
+        //Calculo de imc
+        $imc = $antropometria->peso / ($antropometria->altura * $antropometria->altura);
+        //Setando valor imc
+        $antropometria->imc = $imc;
+        //Calculo de peso ideal
+        if ($paciente->sexo == 1) {
+            $pesoIdeal = $antropometria->altura - 100 - (($antropometria->altura - 150) / 4);
+        }else{
+            $pesoIdeal = $antropometria->altura - 100 - (($antropometria->altura - 150) / 2);
+        }
+        //Setando valor Peso ideal
+        $antropometria->pesoIdeal = $pesoIdeal;
+
 
         if ($antropometria->save()) {
             return redirect('paciente/' .$id)->with('success', 'Alterações realizadas com sucesso!');
