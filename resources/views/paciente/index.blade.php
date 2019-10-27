@@ -62,7 +62,7 @@
 </div>
 
 @endforeach
-
+{{$paciente->links()}}
 
 
 @endsection
