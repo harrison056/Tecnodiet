@@ -47,7 +47,6 @@
     		<ul>
 				<li><strong>email</strong> {{$pacientes->email}}</li>
 				<li><strong>telefone</strong> {{$pacientes->telefone}}</li>
-				<li><strong>sexo</strong> {{$pacientes->sexo}}</li>
 				<li><strong>CPF</strong> {{$pacientes->cpf}}</li>
 				<li><strong>Adicionado em: </strong> {{date("d/m/Y H:i", strtotime($pacientes->created_at))}}</li>
 			</ul>

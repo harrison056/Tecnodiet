@@ -23,8 +23,8 @@
 		<input type="hidden" name="_method" value="PATCH">
 		<div class="box-body">
 			<div class="col-md-3">
-		    	<label for="sku"><h4>Altura</h4></label>
-		    	<input type="number" class="form-control" id="altura" name="altura" step=".01" placeholder="0,00" required>
+		    	<label for="sku"><h4>Altura (em cm)</h4></label>
+		    	<input type="number" class="form-control" id="altura" name="altura" required>
 		    </div>
 		    <div class="col-md-3">
 		    	<label for="titulo"><h4>Peso</h4></label>
