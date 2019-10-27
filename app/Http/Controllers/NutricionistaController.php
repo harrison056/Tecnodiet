@@ -19,8 +19,8 @@ class NutricionistaController extends Controller
         return view('nutricionista.index', array('paciente'=> $paciente, 'buscar' => null)); 
     }
 
-    public function show($id){
-        $nutricionista = User::find($id);
+    public function show(){
+        $nutricionista = User::find(Auth::user()->id);
         $logradouro = Logradouro::find($nutricionista->logradouro_id);
         return view('nutricionista.show', array('nutricionista' => $nutricionista, 'logradouro' => $logradouro));
     }

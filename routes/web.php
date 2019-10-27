@@ -23,6 +23,8 @@ Route::resource('/antropometria','AntropometriaController')->middleware('auth');
 
 Route::post('/paciente/busca', 'PacienteController@busca');
 
+Route::get('nutricionista/profile', 'NutricionistaController@show');
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
