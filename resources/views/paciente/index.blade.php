@@ -8,7 +8,6 @@
 		</div>
 	@endif
 
-<h1>Página do Paciente</h1>
 	
 
 <div class="col-md-2">
@@ -46,10 +45,12 @@
     <div class="box-body">
     	<div class="col-md-8">
     		<ul>
-				<li><strong>Email</strong> {{$pacientes->email}}</li>
-				<li><strong>Telefone</strong> {{$pacientes->telefone}}</li>
+				<li><strong>email</strong> {{$pacientes->email}}</li>
+				<li><strong>telefone</strong> {{$pacientes->telefone}}</li>
+				<li><strong>sexo</strong> {{$pacientes->sexo}}</li>
 				<li><strong>CPF</strong> {{$pacientes->cpf}}</li>
-    		</ul>
+				<li><strong>Adicionado em: </strong> {{date("d/m/Y H:i", strtotime($pacientes->created_at))}}</li>
+			</ul>
     	</div>
 
     	<div class="col-md-4">
