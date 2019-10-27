@@ -22,7 +22,7 @@
 				</div>
 		</form>
 	</div>
-
+  
 <ul>
 	@foreach($paciente as $pacientes)
 

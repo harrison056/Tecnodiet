@@ -24,7 +24,8 @@
 				<li><strong>Adicionado em: </strong> {{date("d/m/Y H:i", strtotime($paciente->created_at))}}</li>
 			</ul>
 </div>
-		<form method="POST" action="{{action('PacienteController@destroy', $paciente->id)}}">
+<div>
+	<form method="POST" action="{{action('PacienteController@destroy', $paciente->id)}}">
 		@csrf
 		<input type="hidden" name="_method" value="DELETE">
 		<button class="btn btn-primary">Excluir</button>

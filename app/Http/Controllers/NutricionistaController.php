@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
+use App\Paciente;
 use App\Logradouro;
 use Illuminate\Support\Facades\Auth;
 
@@ -12,14 +13,21 @@ class NutricionistaController extends Controller
     
     public function index()
     {
-        return view('nutricionista.index'); 
+        $paciente = Paciente::where('user_id', 'LIKE', Auth::user()->id)
+            ->orderBy('created_at', 'desc')
+            ->paginate(7);
+        return view('nutricionista.index', array('paciente'=> $paciente, 'buscar' => null)); 
     }
 
     public function edit($id)
     {
         $nutricionista = User::find($id);
         $logradouro = Logradouro::find($nutricionista->logradouro_id);
-        return view('nutricionista.edit', compact('nutricionista', 'id'), array('logradouro' => $logradouro));
+        if ($nutricionista->id == Auth::user()->id) {
+            return view('nutricionista.edit', compact('nutricionista', 'id'), array('logradouro' => $logradouro));
+        }else{
+            return view('nutricionista.index'); 
+        }
     }    
 
     
