@@ -16,6 +16,10 @@ class Paciente extends Model
         return $this->hasOne('App\Antropometria');
     }
 
+    public function anamnese(){
+        return $this->hasOne('App\Anamnese');
+    }
+
     public function dieta(){
         return $this->hasOne('App\Dieta');
     }

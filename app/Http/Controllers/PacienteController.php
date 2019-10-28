@@ -60,6 +60,7 @@ class PacienteController extends Controller
 		]);
 
 		$paciente->antropometria()->create(); //Cria Antropometria
+        $paciente->anamnese()->create(); //Cria Anamnese
 		//$paciente->dieta()->create(); //Cria Dieta
 		
 		if ($paciente->save()) {
