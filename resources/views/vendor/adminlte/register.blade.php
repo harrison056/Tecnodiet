@@ -9,7 +9,7 @@
 @section('body')
     <div class="register-box">
         <div class="register-logo">
-            <a href="/">{!! config('adminlte.logo', '<b>Admin</b>LTE') !!}</a>
+            <a href="/"><img src="{{url('img/logo-pequeno.png')}}" style="width:40; height:90px;"><br>{!! config('adminlte.logo', '<b>Admin</b>LTE') !!}</a>
         </div>
 
         <div class="register-box-body">

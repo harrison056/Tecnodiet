@@ -10,7 +10,7 @@
 @section('body')
     <div class="login-box">
         <div class="login-logo">
-            <a href="/">{!! config('adminlte.logo', '<b>Admin</b>LTE') !!}</a>
+            <a href="/"><img src="{{url('img/logo-pequeno.png')}}" style="width:40; height:90px;"><br>{!! config('adminlte.logo', '<b>Admin</b>LTE') !!}</a>
         </div>
         <!-- /.login-logo -->
         <div class="login-box-body">
