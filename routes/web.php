@@ -21,6 +21,8 @@ Route::resource('/paciente','PacienteController')->middleware('auth');
 
 Route::resource('/antropometria','AntropometriaController')->middleware('auth');
 
+Route::resource('/anamnese','AnamneseController')->middleware('auth');
+
 Route::post('/paciente/busca', 'PacienteController@busca');
 
 Route::get('nutricionista/profile', 'NutricionistaController@show');

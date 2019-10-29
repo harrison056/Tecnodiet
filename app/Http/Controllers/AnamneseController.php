@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Paciente;
+use App\Anamnese;
 
 class AnamneseController extends Controller
 {
@@ -18,7 +20,7 @@ class AnamneseController extends Controller
         $paciente = Paciente::find($id);
         $anamnese = Anamnese::find($id);
         if($anamnese->casoClinico == null){
-            return view('antropometria.edit', compact('anamnese', 'id'), array('anamnese' => $anamnese));
+            return view('anamnese.edit', compact('anamnese', 'id'), array('anamnese' => $anamnese));
         }else{
             return view('anamnese.show', array('paciente'=> $paciente, 'anamnese' => $anamnese));
         }

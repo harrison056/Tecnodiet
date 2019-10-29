@@ -22,6 +22,7 @@ class CreateAnamneseTable extends Migration
             $table->boolean('bebida')->nullable();
             $table->boolean('fumante')->nullable();
             $table->boolean('foraDeCasa')->nullable();
+            $table->string('obsRestricao')->nullable();
 
             $table->boolean('sono')->nullable();
             $table->time('hrSono')->nullable();
