@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Paciente;
 use App\Antropometria;
+use PDF;
 
 class AntropometriaController extends Controller
 {
@@ -94,6 +95,14 @@ class AntropometriaController extends Controller
         if ($antropometria->save()) {
             return redirect('antropometria/' .$id)->with('success', 'Antropometria cadastrada com sucesso!');
         }
+    }
+
+    public function gerarPdf($id)
+    {
+        $paciente = Paciente::find($id);
+        $antropometria = Antropometria::find($id);
+        $pdf = PDF::loadView('antropometria.pdf', array('paciente'=> $paciente, 'antropometria' => $antropometria));
+        return $pdf->setPaper('a4')->stream();
     }
 
 }

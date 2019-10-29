@@ -128,7 +128,12 @@ return [
     */
 
     'menu' => [
-        
+        ['header' => 'account_settings'],
+        [
+            'text' => 'profile',
+            'url'  => 'nutricionista/profile',
+            'icon' => 'fas fa-fw fa-user',
+        ],
         ['header' => 'main_navigation'],
         [
             'text' => 'blog',
@@ -138,19 +143,13 @@ return [
         [
             'text'        => 'Pacientes',
             'url'         => '/paciente',
-            'icon'        => 'fas fa-fw fa-user',
+            'icon'        => 'fas fa-fw fa-users',
             'label_color' => 'success', 
         ],
-        ['header' => 'account_settings'],
         [
-            'text' => 'profile',
-            'url'  => 'nutricionista/profile',
-            'icon' => 'fas fa-fw fa-user',
-        ],
-        [
-            'text' => 'change_password',
-            'url'  => 'admin/settings',
-            'icon' => 'fas fa-fw fa-lock',
+            'text' => 'Adicionar Paciente',
+            'url'  => '/paciente/create',
+            'icon' => 'fas fa-fw fa-user-plus',
         ]
     ],
 
