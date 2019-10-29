@@ -45,7 +45,34 @@ class AnamneseController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $paciente = Paciente::find($id);
+
+        $anamnese = Antropometria::find($id);
+
+        $anamnese->casoClinico = $request->get('casoClinico');
+        $anamnese->restricao = $request->get('restricao');
+        $anamnese->bebida = $request->get('bebida');
+        $anamnese->fumante = $request->get('fumante');
+        $anamnese->foraDeCasa = $request->get('foraDeCasa');
+        $anamnese->sono = $request->get('sono');
+        $anamnese->hrSono = $request->get('hrSono');
+        $anamnese->obsSono = $request->get('obsSono');
+        $anamnese->exercicio = $request->get('exercicio');
+        $anamnese->patologias = $request->get('patologias');
+        $anamnese->medicamentos = $request->get('medicamentos');
+        $anamnese->exames = $request->get('exames');
+        $anamnese->historicoFamiliar = $request->get('historicoFamiliar');
+        $anamnese->apetite = $request->get('apetite');
+        $anamnese->mastigacao = $request->get('mastigacao');
+        $anamnese->intestinal = $request->get('intestinal');
+        $anamnese->suplementos = $request->get('suplementos');
+        $anamnese->alergias = $request->get('alergias');
+        $anamnese->intolerancias = $request->get('intolerancias');
+        $anamnese->obsGeral = $request->get('obsGeral');
+
+        if ($anamnese->save()) {
+            return redirect('anamnese/' .$id)->with('success', 'Anamnese cadastrada com sucesso!');
+        }
     }
 
 }
