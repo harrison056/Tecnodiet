@@ -55,7 +55,7 @@
     	<div class="col-md-4">
     		<button class="btn btn-info">Dieta</button>
     		<a href="{{URL::to('antropometria')}}/{{$pacientes->id}}"><button class="btn btn-info">Antropometria</button></a>
-    		<button class="btn btn-info" >Anamnese</button>
+    		<a href="{{URL::to('anamnese')}}/{{$pacientes->id}}"><button class="btn btn-info" >Anamnese</button></a>
     	</div>
 
 	</div>

@@ -43,7 +43,7 @@
     		</div>
     		<br>
     		<div class="row">
-    			<button class="btn btn-info" >Anamnese</button>
+    			<a href="{{URL::to('anamnese')}}/{{$paciente->id}}"><button class="btn btn-info" >Anamnese</button></a>
     		</div>
 			<br>
     		<div class="row">

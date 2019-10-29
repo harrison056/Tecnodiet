@@ -87,8 +87,8 @@
 
 	 	<div class="box-body">
 			<div class="col-md-12">
-				<label for="casoClinico"><h4>Observações</h4></label>
-				<textarea class="form-control" id="casoClinico" name="casoClinico" rows="3" placeholder="Refeições fora de casa, quanto fuma, quanto e o que bebe..." ></textarea>
+				<label for="obsRestricao"><h4>Observações</h4></label>
+				<textarea class="form-control" id="obsRestricao" name="obsRestricao" rows="3" placeholder="Refeições fora de casa, quanto fuma, quanto e o que bebe..." ></textarea>
 			</div>
 	 	</div>
 
