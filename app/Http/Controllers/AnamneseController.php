@@ -52,7 +52,8 @@ class AnamneseController extends Controller
         $anamnese = Anamnese::find($id);
 
         $this->validate($request,[
-            'casoClinico' => 'required|max:255'
+            'casoClinico' => 'required|max:255',
+            'obsGeral' => 'max:255',
         ]);
 
         $anamnese->casoClinico = $request->get('casoClinico');
