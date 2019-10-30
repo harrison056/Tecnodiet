@@ -14,6 +14,10 @@
         <h2 class="box-title"><b>Anamnese - <a href="{{URL::to('paciente')}}/{{$paciente->id}}">{{$paciente->nome}}</a></b></h2>	
     </div>
 
+    <div class="box-body">
+    	<h4><strong>Caso Clínico</strong></h4>
+    	<p>{{$anamnese->casoClinico}}</p>
+    </div>
    
 </div>
 

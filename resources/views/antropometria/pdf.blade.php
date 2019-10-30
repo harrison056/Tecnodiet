@@ -2,12 +2,14 @@
 <html>
 <head>
 	<meta charset="utf-8">
-	<title>Ficha de dieta</title>
+	<title>Ficha Antropométrica</title>
 	<style type="text/css">
 		.campo{
 			padding: 10px;
 		}	
 	</style>
+	<!-- Bootstrap CSS -->
+    <link rel="stylesheet" href=" {{URL::to('dist/css/bootstrap.min.css')}} ">
 </head>
 <body>
 	<center>
@@ -43,66 +45,84 @@
 	
 <fieldset>
 
-	<div class="campo" align="center">
+	<div class="campo">
 		<label><strong>IMC:</strong> {{$antropometria->imc}}</label>
-		<label><strong>Peso Ideal:</strong> {{$antropometria->pesoIdeal}}</label>
+	</div><label>
+	<div class="campo">
+		<strong>Peso Ideal:</strong> {{$antropometria->pesoIdeal}}</label>
 	</div>
-		 
-	<div class="campo" align="center">
+	<div class="campo">
 		<label><strong>Altura:</strong> {{$antropometria->altura}} cm</label>
+	</div>
+	<div class="campo">
 		<label><strong>Peso:</strong> {{$antropometria->peso}} Kg</label>
 	</div>
-
 	<div class="campo">
 		<label><strong>Braço Direito Relaxado:</strong> {{$antropometria->bracoDirRelaxado}}cm</label>
+	</div>
+	<div class="campo">
 		<label><strong>Braço Esquerdo Relaxado:</strong> {{$antropometria->bracoEsqRelaxado}}cm</label>
 	</div>
-
 	<div class="campo">
 		<label><strong>Braço Direito Contraido:</strong> {{$antropometria->bracoDirContraido}}cm</label>
+	</div>
+	<div class="campo">
 		<label><strong>Braço Esquerdo Contraido:</strong> {{$antropometria->bracoEsqContraido}}cm</label>
 	</div>
-
 	<div class="campo">
 		<label><strong>Antebraço Direito:</strong> {{$antropometria->antebracoDir}}cm</label>
+	</div>
+	<div class="campo">	
 		<label><strong>Antebraço Esquerdo:</strong> {{$antropometria->antebracoEsq}}cm</label>
 	</div>
-
 	<div class="campo">
 		<label><strong>Punho Direito:</strong> {{$antropometria->punhoDir}}cm</label>
+	</div>
+	<div class="campo">
 		<label><strong>Punho Esquerdo:</strong> {{$antropometria->punhoEsq}}cm</label>
 	</div>
 
 	<div class="campo">
 		<label><strong>Pescoço:</strong> {{$antropometria->pescoco}}cm</label>
+	</div>
+
+	<div class="campo">
 		<label><strong>Ombro:</strong> {{$antropometria->ombro}}cm</label>
 	</div>
-
 	<div class="campo">
 		<label><strong>Peitoral:</strong> {{$antropometria->peitoral}}cm</label>
+	</div>
+	<div class="campo">
 		<label><strong>Cintura:</strong> {{$antropometria->cintura}}cm</label>
 	</div>
-
 	<div class="campo">
 		<label><strong>Abdomen:</strong> {{$antropometria->abdomen}}cm</label>
+	</div>
+	<div class="campo">
 		<label><strong>Quadril:</strong> {{$antropometria->quadril}}cm</label>
 	</div>
-
 	<div class="campo">
 		<label><strong>Panturrilha Direita:</strong> {{$antropometria->panturrilhaDir}}cm</label>
+	</div>
+	<div class="campo">
 		<label><strong>Panturrilha Esquerda:</strong> {{$antropometria->panturrilhaEsq}}cm</label>
 	</div>
-
 	<div class="campo">
 		<label><strong>Coxa Direita:</strong> {{$antropometria->coxaDir}}cm</label>
-		<label>Coxa Esquerda:</strong> {{$antropometria->coxaEsq}}cm</label>
 	</div>
-
+	<div class="campo">
+		<label><strong>Coxa Esquerda:</strong> {{$antropometria->coxaEsq}}cm</label>
+	</div>
 	<div class="campo">
 		<label><strong>Punho:</strong> {{$antropometria->punho}}º</label>
+	</div>
+	<div class="campo">
 		<label><strong>Femur:</strong> {{$antropometria->femur}}º</label>
 	</div>
 </fieldset>
-		
+	
+
+<script type="text/javascript" src="{{URL::to('js/jquery.min.js')}}"></script>
+    <script type="text/javascript" src="{{URL::to('dist/js/bootstrap.min.js')}}"></script>		
 </body>
 </html>
