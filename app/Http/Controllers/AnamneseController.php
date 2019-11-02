@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Paciente;
 use App\Anamnese;
+use PDF;
 
 class AnamneseController extends Controller
 {
@@ -80,6 +81,14 @@ class AnamneseController extends Controller
         if ($anamnese->save()) {
             return redirect('anamnese/' .$id)->with('success', 'Anamnese cadastrada com sucesso!');
         }
+    }
+
+    public function gerarPdf($id)
+    {
+        $paciente = Paciente::find($id);
+        $anamnese = Anamnese::find($id);
+        $pdf = PDF::loadView('anamnese.pdf', array('paciente'=> $paciente, 'anamnese' => $anamnese));
+        return $pdf->setPaper('a4')->stream();
     }
 
 }

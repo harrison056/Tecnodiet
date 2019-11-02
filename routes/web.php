@@ -29,6 +29,8 @@ Route::get('nutricionista/profile', 'NutricionistaController@show')->middleware(
 
 Route::get('/antropometria/{id}/pdf', 'AntropometriaController@gerarPdf')->middleware('auth');
 
+Route::get('/anamnese/{id}/pdf', 'AnamneseController@gerarPdf')->middleware('auth');
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
