@@ -2,7 +2,7 @@
 <html>
 <head>
 	<meta charset="utf-8">
-	<title>Ficha Antropométrica</title>
+	<title>Anamnese</title>
 	<style type="text/css">
 		.campo{
 		}	
@@ -14,7 +14,7 @@
 </head>
 <body>
 	<center>
-		<h2 align="center">Ficha Antropométrica</h2>
+		<h2 align="center">Anamnese</h2>
 	</center>
 	<fieldset>
         <!-- campos -->

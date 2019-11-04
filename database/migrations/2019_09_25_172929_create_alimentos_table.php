@@ -17,8 +17,8 @@ class CreateAlimentosTable extends Migration
             $table->bigIncrements('id');
             
             $table->string('description');
-            $table->integer('base_qty');
-            $table->integer('energy_kcal');
+            $table->double('base_qty');
+            $table->double('energy_kcal')->default(100);
 
             $table->timestamps();
         });
