@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateAlimentosTable extends Migration
+class CreateGastoEnergeticosTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,13 @@ class CreateAlimentosTable extends Migration
      */
     public function up()
     {
-        Schema::create('alimentos', function (Blueprint $table) {
+        Schema::create('gasto_energeticos', function (Blueprint $table) {
             $table->bigIncrements('id');
-            
-            $table->string('description');
-            $table->double('base_qty');
-            $table->double('energy_kcal');
+
+            $table->double('tmb')->nullable();
+            $table->double('get')->nullable();
+
+            $table->integer('paciente_id')->unsigned();//chave estrangeira
 
             $table->timestamps();
         });
@@ -31,6 +32,6 @@ class CreateAlimentosTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('alimentos');
+        Schema::dropIfExists('gasto_energeticos');
     }
 }

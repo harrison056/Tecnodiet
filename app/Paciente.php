@@ -23,4 +23,8 @@ class Paciente extends Model
     public function dieta(){
         return $this->hasOne('App\Dieta');
     }
+
+    public function gastoEnergetico(){
+        return $this->hasOne('App\GastoEnergetico');
+    }
 }

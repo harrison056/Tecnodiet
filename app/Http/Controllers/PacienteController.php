@@ -7,6 +7,7 @@ use App\Paciente;
 use App\User;
 use App\Logradouro;
 use App\Antropometria;
+use DateTime;
 use Illuminate\Support\Facades\Auth;
 
 class PacienteController extends Controller
@@ -48,10 +49,18 @@ class PacienteController extends Controller
         $logradouro->cep = $request['cep'];
         $logradouro->save();
 
+//        $idade = PacienteController::idade($request['dtNascimento']);
+//        $dn = new DateTime($request['dtNascimento']);
+//        $agora = new DateTime();
+
+//        $idade = $agora->diff($dn);
+//        $idade = $idade->y;
+
 		$paciente = Paciente::create([
 			'nome' => $request['nome'],
             'telefone' => $request['tel'],
             'dtNascimento' => $request['dtNascimento'],
+//            'idade' => $idade,
             'sexo' => $request['sexo'],
             'cpf' => $request['cpf'],
             'logradouro_id' => $logradouro->id,
@@ -129,5 +138,14 @@ class PacienteController extends Controller
 
 		return view('paciente.index', array('paciente' => $paciente, 'buscar' => $request->input('busca')));
 	}
+
+    protected function idade($dtNascimento){
+//        date_default_timezone_get('America/Fortaleza');
+        $dn = new DateTime($dtNascimento);
+        $agora = new DateTime();
+
+        $idade = $agora->diff($dn);
+        return $idade->y;
+    }
 
 }

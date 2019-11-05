@@ -6,9 +6,13 @@ use Illuminate\Database\Eloquent\Model;
 
 class Refeicao extends Model
 {
-	protected $fillable = ['hora', 'descricao', 'alimento_id'];
+	protected $fillable = ['hora', 'descricao'];
 
-    public function paciente(){
+	protected $casts = [
+		'alimento_id' => 'array',
+	];
+
+    public function dieta(){
         return $this->belongsTo('App\Dieta');
     }
 
