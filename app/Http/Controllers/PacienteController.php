@@ -7,7 +7,8 @@ use App\Paciente;
 use App\User;
 use App\Logradouro;
 use App\Antropometria;
-use DateTime;
+use App\Anamnese;
+use App\GastoEnergetico;
 use Illuminate\Support\Facades\Auth;
 
 class PacienteController extends Controller
@@ -49,18 +50,11 @@ class PacienteController extends Controller
         $logradouro->cep = $request['cep'];
         $logradouro->save();
 
-//        $idade = PacienteController::idade($request['dtNascimento']);
-//        $dn = new DateTime($request['dtNascimento']);
-//        $agora = new DateTime();
-
-//        $idade = $agora->diff($dn);
-//        $idade = $idade->y;
 
 		$paciente = Paciente::create([
 			'nome' => $request['nome'],
             'telefone' => $request['tel'],
             'dtNascimento' => $request['dtNascimento'],
-//            'idade' => $idade,
             'sexo' => $request['sexo'],
             'cpf' => $request['cpf'],
             'logradouro_id' => $logradouro->id,
@@ -68,9 +62,12 @@ class PacienteController extends Controller
             'user_id' => Auth::user()->id
 		]);
 
+//        $paciente->idade = $idade;
+
 		$paciente->antropometria()->create(); //Cria Antropometria
         $paciente->anamnese()->create(); //Cria Anamnese
-		//$paciente->dieta()->create(); //Cria Dieta
+        $paciente->gastoEnergetico()->create();//Cria Gasto Energético
+//		$paciente->dieta()->create(); //Cria Dieta
 		
 		if ($paciente->save()) {
 			return redirect('paciente/')->with('success', 'Paciente cadastrado com sucesso!');
@@ -123,10 +120,14 @@ class PacienteController extends Controller
 		$paciente = Paciente::find($id);
 		$logradouro = Logradouro::find($paciente->logradouro_id);
 		$antropometria = Antropometria::where('paciente_id', 'LIKE', $id);
+        $anamnese = Anamnese::where('paciente_id', 'LIKE', $id);
+        $gastoEnergetico = GastoEnergetico::where('paciente_id', 'LIKE', $id);
 
 		$paciente->delete();
 		$logradouro->delete();
 		$antropometria->delete();
+        $anamnese->delete();
+        $gastoEnergetico->delete();
 		
 		return redirect('paciente/')->with('success','Paciente deletado com sucesso!');
 	}
@@ -139,13 +140,11 @@ class PacienteController extends Controller
 		return view('paciente.index', array('paciente' => $paciente, 'buscar' => $request->input('busca')));
 	}
 
-    protected function idade($dtNascimento){
-//        date_default_timezone_get('America/Fortaleza');
+    private function idade($dtNascimento){
         $dn = new DateTime($dtNascimento);
-        $agora = new DateTime();
+        $agora = new DateTime(date('Y-m-d'));
 
         $idade = $agora->diff($dn);
         return $idade->y;
     }
-
 }

@@ -23,6 +23,7 @@
                 @else
                 <h4><strong>Sexo</strong> Feminino</h4>
                 @endif
+                <h4><strong>Data de Nascimento</strong> {{date("d/m/Y", strtotime($paciente->dtNascimento))}}</h4>
 				<h4><strong>CPF</strong> {{$paciente->cpf}}</h4>
 				<h4><strong>Rua</strong> {{$logradouro->rua}}</h4>
 				<h4><strong>Bairro</strong> {{$logradouro->bairro}}</h4>
@@ -49,6 +50,10 @@
     		<div class="row">
     			<a href="{{URL::to('antropometria')}}/{{$paciente->id}}"><button class="btn btn-info">Antropometria</button></a>
     		</div>
+            <br>
+            <div class="row">
+                <a href="{{URL::to('gasto/' .$paciente->id. '/edit')}}"><button class="btn btn-info">Gasto Energético</button></a>
+            </div>
     		<br>
     		<div class="row">
 				<button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modal-danger">Excluir</button>

@@ -145,7 +145,7 @@
 		    	<input type="number" class="form-control" id="femur" step=".01" name="femur" placeholder="0,00" required>
 		    </div>
 	 	</div>
-	 	<div class="box-body">
+	 	<div class="box-footer">
 	 		<div>
         		<div class="col-md-12">
         			<button type="submit" class="btn btn-success">Cadastrar</button>

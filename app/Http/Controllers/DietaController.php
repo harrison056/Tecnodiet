@@ -2,52 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Paciente;
+use App\Dieta;
+use App\Refeicao;
+use App\Alimento;
 use Illuminate\Http\Request;
 
 class DietaController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
+    
     /**
      * Show the form for editing the specified resource.
      *
@@ -56,7 +19,8 @@ class DietaController extends Controller
      */
     public function edit($id)
     {
-        //
+        $dieta = Dieta::where('paciente_id', 'LIKE', $id);
+        return view('dieta.edit', compact('dieta', 'id'), array('dieta' => $dieta)); 
     }
 
     /**
@@ -80,5 +44,12 @@ class DietaController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function buscaAlimento(Request $request){
+        $alimento = Alimento::where('description', 'LIKE', '%'.$request->input('busca').'%')
+        ->paginate(7);
+
+        return view('paciente.index', array('paciente' => $paciente, 'buscar' => $request->input('busca')));
     }
 }
