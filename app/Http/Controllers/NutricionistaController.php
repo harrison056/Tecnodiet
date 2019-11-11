@@ -45,7 +45,11 @@ class NutricionistaController extends Controller
         $this->validate($request,[
             'name' => 'required|max:255',
             'tel' => 'required|numeric',
-            'crn' => 'required|numeric'
+            'crn' => 'required|numeric',
+            'rua' => 'required',
+            'bairro' => 'required',
+            'cidade' => 'required',
+            'cep' => 'required|numeric',
         ]);
 
         $user->name = $request->get('name');

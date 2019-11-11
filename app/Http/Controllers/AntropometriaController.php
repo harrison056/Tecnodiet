@@ -19,7 +19,7 @@ class AntropometriaController extends Controller
     {
         $paciente = Paciente::find($id);
         $antropometria = Antropometria::find($id);
-        if($antropometria->peso == null){
+        if($antropometria->imc == null){
             return view('antropometria.edit', compact('antropometria', 'id'), array('antropometria' => $antropometria));
         }else{
             return view('antropometria.show', array('paciente'=> $paciente, 'antropometria' => $antropometria));
@@ -83,8 +83,10 @@ class AntropometriaController extends Controller
 
         //Calculo de peso ideal
         if ($paciente->sexo == 1) {
+            //Masculino
             $pesoIdeal = $antropometria->altura - 100 - (($antropometria->altura - 150) / 4);
         }else{
+            //Feminino
             $pesoIdeal = $antropometria->altura - 100 - (($antropometria->altura - 150) / 2);
         }
 

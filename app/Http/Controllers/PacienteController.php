@@ -33,13 +33,15 @@ class PacienteController extends Controller
 
 	public function store(Request $request){
 
-		
 		$this->validate($request,[
             'nome' => 'required|max:255',
             'tel' => 'required|numeric',
-            'dtNascimento'=> 'required',
             'sexo' => 'required',
-            'cpf' => 'required|numeric',
+            'cpf' => 'required|numeric|unique:pacientes',
+            'rua' => 'required',
+            'bairro' => 'required',
+            'cidade' => 'required',
+            'cep' => 'numeric|required',
             'email' => 'required|max:255|unique:pacientes'
         ]);
 		
@@ -48,9 +50,7 @@ class PacienteController extends Controller
         $logradouro->bairro = $request['bairro'];
         $logradouro->cidade = $request['cidade'];
         $logradouro->cep = $request['cep'];
-        $logradouro->save();
-
-
+        
 		$paciente = Paciente::create([
 			'nome' => $request['nome'],
             'telefone' => $request['tel'],
@@ -62,17 +62,13 @@ class PacienteController extends Controller
             'user_id' => Auth::user()->id
 		]);
 
-//        $paciente->idade = $idade;
 
 		$paciente->antropometria()->create(); //Cria Antropometria
         $paciente->anamnese()->create(); //Cria Anamnese
         $paciente->gastoEnergetico()->create();//Cria Gasto Energético
-//		$paciente->dieta()->create(); //Cria Dieta
 		
-		if ($paciente->save()) {
+		if ($paciente->save() && $logradouro->save()) {
 			return redirect('paciente/')->with('success', 'Paciente cadastrado com sucesso!');
-		}else{
-			$logradouro->delete();
 		}
 		
 	}
