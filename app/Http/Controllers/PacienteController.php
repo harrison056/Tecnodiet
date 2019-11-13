@@ -50,6 +50,7 @@ class PacienteController extends Controller
         $logradouro->bairro = $request['bairro'];
         $logradouro->cidade = $request['cidade'];
         $logradouro->cep = $request['cep'];
+        $logradouro->save();
         
 		$paciente = Paciente::create([
 			'nome' => $request['nome'],

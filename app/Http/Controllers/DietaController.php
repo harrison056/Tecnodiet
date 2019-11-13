@@ -17,7 +17,7 @@ class DietaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function dieta($id)
     {
         $dieta = Dieta::where('paciente_id', 'LIKE', $id);
         return view('dieta.edit', compact('dieta', 'id'), array('dieta' => $dieta)); 
@@ -35,16 +35,7 @@ class DietaController extends Controller
         //
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
-    }
+    
 
     public function buscaAlimento(Request $request)
     {

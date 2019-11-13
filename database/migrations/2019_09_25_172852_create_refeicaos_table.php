@@ -20,6 +20,7 @@ class CreateRefeicaosTable extends Migration
             $table->string('descricao');
 
             $table->integer('alimento_id')->unsigned();
+            $table->integer('dieta_id')->unsigned();
 
             $table->timestamps();
         });

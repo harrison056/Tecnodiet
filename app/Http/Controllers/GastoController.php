@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Paciente;
 use App\Antropometria;
 use App\GastoEnergetico;
-use DateTime;
+
 
 class GastoController extends Controller
 {
@@ -71,12 +71,14 @@ class GastoController extends Controller
             }else{
                 $tmb = (10 * $peso) + (6.25 * $altura) - (5 * $idade) - 161;
             }
-        }else{
+        }elseif ($protocolo == '2') {
             if ($sexo == 1) {
                 $tmb = 879 + 10.2 * $peso;
             }else{
                 $tmb = 795 + 7.18 * $peso;
             }
+        }else{ 
+            $tmb = null;
         }
 
         $atividadeFisica = $request->get('atividadeFisica');//Nível de atividade Física
@@ -87,8 +89,10 @@ class GastoController extends Controller
             $get = $tmb * 1.5;
         }elseif ($atividadeFisica == '3') {
             $get = $tmb * 1.8;
-        }else{
+        }elseif ($atividadeFisica == '4') {
             $get = $tmb * 2.1;
+        }else{
+            $get = null;
         }
 
         //Setando dados...

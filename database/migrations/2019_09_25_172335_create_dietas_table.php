@@ -20,7 +20,6 @@ class CreateDietasTable extends Migration
             $table->string('obs')->nullable();
     
             $table->integer('paciente_id')->unsigned();
-            $table->integer('refeicao_id')->unsigned();
 
             $table->timestamps();
         });

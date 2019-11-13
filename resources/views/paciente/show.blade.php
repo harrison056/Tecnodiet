@@ -40,7 +40,7 @@
     		</div>
     		<br>
     		<div class="row">
-    			<button class="btn btn-info">Dieta</button>
+    			<a href="{{URL::to('paciente/' .$paciente->id. '/dieta')}}"><button class="btn btn-info">Dieta</button></a>
     		</div>
     		<br>
     		<div class="row">
