@@ -44,9 +44,38 @@
         </div>
 
         <div class="col-md-6">
-          <form>
+          <form method="POST" id="form-busca" action="">
             <input type="text" class="form-control" id="busca" name="busca" placeholder="Buscar Alimentos">
           </form>          
+
+          <ul class="resultado">
+            
+          </ul>
+
+          <script type="text/javascript">
+            $(function(){
+              //Pesquisar os cursos sem refresh na página
+              $("#busca").keyup(function(){
+    
+                var busca = $(this).val();
+    
+              //Verificar se há algo digitado
+              if(busca != ''){
+                var dados = { 
+                  palavra : busca
+                }   
+                  $.post('busca.php', dados, function(retorna){
+                    //Mostra dentro da ul os resultado obtidos 
+                    $(".resultado").html(retorna);
+                  });
+                }else{
+                  $(".resultado").html('');
+                }   
+              });
+            });
+          </script>
+
+          
         </div>
 
       </div>

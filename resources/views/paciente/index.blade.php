@@ -53,7 +53,7 @@
     	</div>
 
     	<div class="col-md-4">
-    		<button class="btn btn-info">Dieta</button>
+    		<a href="{{URL::to('paciente/' .$pacientes->id. '/dieta')}}"><button class="btn btn-info">Dieta</button></a>
     		<a href="{{URL::to('antropometria')}}/{{$pacientes->id}}"><button class="btn btn-info">Antropometria</button></a>
     		<a href="{{URL::to('anamnese')}}/{{$pacientes->id}}"><button class="btn btn-info" >Anamnese</button></a>
     	</div>

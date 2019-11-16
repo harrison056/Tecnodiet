@@ -35,14 +35,15 @@ class PacienteController extends Controller
 
 		$this->validate($request,[
             'nome' => 'required|max:255',
-            'tel' => 'required|numeric',
+            'tel' => 'required|celular_com_ddd',
             'sexo' => 'required',
-            'cpf' => 'required|numeric|unique:pacientes',
+            'cpf' => 'required|formato_cpf|unique:pacientes',
             'rua' => 'required',
             'bairro' => 'required',
             'cidade' => 'required',
             'cep' => 'numeric|required',
-            'email' => 'required|max:255|unique:pacientes'
+            'email' => 'required|max:255|unique:pacientes', 
+            'dtNascimento' => 'data|required'
         ]);
 		
 		$logradouro = new Logradouro();
@@ -67,6 +68,7 @@ class PacienteController extends Controller
 		$paciente->antropometria()->create(); //Cria Antropometria
         $paciente->anamnese()->create(); //Cria Anamnese
         $paciente->gastoEnergetico()->create();//Cria Gasto Energético
+        $paciente->dieta()->create();//Cria Gasto Energético
 		
 		if ($paciente->save() && $logradouro->save()) {
 			return redirect('paciente/')->with('success', 'Paciente cadastrado com sucesso!');
@@ -84,14 +86,15 @@ class PacienteController extends Controller
 
 		$this->validate($request,[
             'nome' => 'required|max:255',
-            'tel' => 'required|numeric',
+            'tel' => 'required|celular_com_ddd',
             'sexo' => 'required',
-            'cpf' => 'required|numeric|unique:pacientes',
+            'cpf' => 'required|formato_cpf|unique:pacientes',
             'rua' => 'required',
             'bairro' => 'required',
             'cidade' => 'required',
-            'cep' => 'required',
-            'email' => 'required|max:255|unique:pacientes'
+            'cep' => 'numeric|required',
+            'email' => 'required|max:255|unique:pacientes', 
+            'dtNascimento' => 'data|required'
         ]);
         $paciente = Paciente::find($id);
 
@@ -119,12 +122,14 @@ class PacienteController extends Controller
 		$antropometria = Antropometria::where('paciente_id', 'LIKE', $id);
         $anamnese = Anamnese::where('paciente_id', 'LIKE', $id);
         $gastoEnergetico = GastoEnergetico::where('paciente_id', 'LIKE', $id);
+        $dieta = Dieta::where('paciente_id', 'LIKE', $id);
 
 		$paciente->delete();
 		$logradouro->delete();
 		$antropometria->delete();
         $anamnese->delete();
         $gastoEnergetico->delete();
+        $dieta->delete();
 		
 		return redirect('paciente/')->with('success','Paciente deletado com sucesso!');
 	}

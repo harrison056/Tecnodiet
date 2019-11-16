@@ -20,7 +20,7 @@ class DietaController extends Controller
     public function dieta($id)
     {
         $dieta = Dieta::where('paciente_id', 'LIKE', $id);
-        return view('dieta.edit', compact('dieta', 'id'), array('dieta' => $dieta)); 
+        return view('dieta.edit', compact('dieta', 'id'), array('dieta' => $dieta));
     }
 
     /**
@@ -32,7 +32,15 @@ class DietaController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $dieta = Dieta::find($id);
+
+        $dieta->descricao = $request->get('descricao');
+        $dieta->obs = $request->get('obs');
+
+        $dieta->refeicao()->create([
+            'hora' => $request['hora'],
+            'descricao' => $request['descricao']
+        ]);
     }
 
     
