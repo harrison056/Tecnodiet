@@ -46,33 +46,41 @@ class PacienteController extends Controller
             'dtNascimento' => 'data|required'
         ]);
 		
-		$logradouro = new Logradouro();
-        $logradouro->rua = $request['rua'];
-        $logradouro->bairro = $request['bairro'];
-        $logradouro->cidade = $request['cidade'];
-        $logradouro->cep = $request['cep'];
-        $logradouro->save();
+        $user = User::find(Auth::user()->id);
+        $qtdPaciente = Paciente::where('user_id', 'LIKE', $user->id)->count();
+
+        if ($qtdPaciente < $user->qtdPaciente) {
+            $logradouro = new Logradouro();
+            $logradouro->rua = $request['rua'];
+            $logradouro->bairro = $request['bairro'];
+            $logradouro->cidade = $request['cidade'];
+            $logradouro->cep = $request['cep'];
+            $logradouro->save();
         
-		$paciente = Paciente::create([
-			'nome' => $request['nome'],
-            'telefone' => $request['tel'],
-            'dtNascimento' => $request['dtNascimento'],
-            'sexo' => $request['sexo'],
-            'cpf' => $request['cpf'],
-            'logradouro_id' => $logradouro->id,
-            'email' => $request['email'],
-            'user_id' => Auth::user()->id
-		]);
+            $dtNascimento = date("Y/d/m", strtotime($request['dtNascimento']));
+            $paciente = Paciente::create([
+                'nome' => $request['nome'],
+                'telefone' => $request['tel'],
+                'dtNascimento' => $dtNascimento,
+                'sexo' => $request['sexo'],
+                'cpf' => $request['cpf'],
+                'logradouro_id' => $logradouro->id,
+                'email' => $request['email'],
+                'user_id' => Auth::user()->id
+            ]);
 
 
-		$paciente->antropometria()->create(); //Cria Antropometria
-        $paciente->anamnese()->create(); //Cria Anamnese
-        $paciente->gastoEnergetico()->create();//Cria Gasto Energético
-        $paciente->dieta()->create();//Cria Gasto Energético
-		
-		if ($paciente->save() && $logradouro->save()) {
-			return redirect('paciente/')->with('success', 'Paciente cadastrado com sucesso!');
-		}
+            $paciente->antropometria()->create(); //Cria Antropometria
+            $paciente->anamnese()->create(); //Cria Anamnese
+            $paciente->gastoEnergetico()->create();//Cria Gasto Energético
+            $paciente->dieta()->create();//Cria Gasto Energético
+
+            if ($paciente->save() && $logradouro->save()) {
+                return redirect('paciente/')->with('success', 'Paciente cadastrado com sucesso!');
+            }
+        }else{
+            return redirect('paciente/')->with('success', 'Quantidade máxima de pacientes foi alcançada. Contrate outro plano!');
+        }
 		
 	}
 
@@ -88,22 +96,27 @@ class PacienteController extends Controller
             'nome' => 'required|max:255',
             'tel' => 'required|celular_com_ddd',
             'sexo' => 'required',
-            'cpf' => 'required|formato_cpf|unique:pacientes',
+            'cpf' => 'required|formato_cpf',
             'rua' => 'required',
             'bairro' => 'required',
             'cidade' => 'required',
             'cep' => 'numeric|required',
-            'email' => 'required|max:255|unique:pacientes', 
+            'email' => 'required|max:255', 
             'dtNascimento' => 'data|required'
         ]);
         $paciente = Paciente::find($id);
 
         $logradouro = Logradouro::find($paciente->logradouro_id);
 
+
+        $dtNascimento = date("Y/d/m", strtotime($request['dtNascimento']));
+
+        
         $paciente->nome = $request->get('nome');
         $paciente->telefone = $request->get('tel');
         $paciente->sexo = $request->get('sexo');
         $paciente->cpf = $request->get('cpf');
+        $paciente->dtNascimento = $dtNascimento;
         $paciente->email = $request->get('email');
         $logradouro->rua = $request->get('rua');
         $logradouro->bairro = $request->get('bairro');

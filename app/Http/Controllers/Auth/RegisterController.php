@@ -55,7 +55,10 @@ class RegisterController extends Controller
             'password' => ['required', 'string', 'min:8', 'confirmed'],
             'tel' => ['required','celular_com_ddd'],
             'crn' => ['required','numeric'],
-            
+            'rua' => 'required',
+            'bairro' => 'required',
+            'cidade' => 'required',
+            'cep' => 'numeric|required'
         ]);
     }
 

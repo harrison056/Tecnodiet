@@ -129,7 +129,7 @@
                 <div class="form-group">
                 <select class="form-control select2" name="qtdPaciente" style="width: 100%;">
                   <option selected="selected" disabled="disabled">Escolha um plano</option>
-                  <option value="10">Grátis - 10 Pacientes</option>
+                  <option value="1">Grátis - 10 Pacientes</option>
                   <option value="500">R$ 29,9 - 500 Pacientes</option>
                   <option value="5000">R$ 99,90 - 5000 Pacientes</option>
                 </select>

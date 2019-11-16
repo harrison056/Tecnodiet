@@ -38,7 +38,7 @@
 		    	<div class="col-md-4">
 		    		<label for="descricao"><h4><b>Data Nascimento</b></h4></label>
 		   			<input type="text" class="form-control" id="dtNascimento" name="dtNascimento"
-		   			value="{{$paciente->dtNascimento}}"></input>
+		   			value="{{date('d/m/Y', strtotime($paciente->dtNascimento))}}"></input>
 		    	</div>
 		    </div>
 
