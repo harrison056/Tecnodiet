@@ -33,18 +33,7 @@ class PacienteController extends Controller
 
 	public function store(Request $request){
 
-		$this->validate($request,[
-            'nome' => 'required|max:255',
-            'tel' => 'required|celular_com_ddd',
-            'sexo' => 'required',
-            'cpf' => 'required|formato_cpf|unique:pacientes',
-            'rua' => 'required',
-            'bairro' => 'required',
-            'cidade' => 'required',
-            'cep' => 'numeric|required',
-            'email' => 'required|max:255|unique:pacientes', 
-            'dtNascimento' => 'data|required'
-        ]);
+		
 		
         $user = User::find(Auth::user()->id);
         $qtdPaciente = Paciente::where('user_id', 'LIKE', $user->id)->count();
@@ -79,7 +68,7 @@ class PacienteController extends Controller
                 return redirect('paciente/')->with('success', 'Paciente cadastrado com sucesso!');
             }
         }else{
-            return redirect('paciente/')->with('success', 'Quantidade máxima de pacientes foi alcançada. Contrate outro plano!');
+            return redirect('paciente/')->with('danger', 'Você chegou ao número máximo de pacientes para seu plano. Exclua algum registro ou contarte novo Plano');
         }
 		
 	}

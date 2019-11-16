@@ -2,12 +2,18 @@
 
 @section('content')
 
-	@if($message = Session::get('success'))
-		<div class="alert alert-success">
-			{{$message}}
-		</div>
-	@endif
 
+@if($message = Session::get('success'))
+	<div class="alert alert-success">
+		{{$message}}
+	</div>
+@endif
+
+@if($message = Session::get('danger'))
+	<div class="alert alert-danger">
+		{{$message}}
+	</div>
+@endif
 	
 
 <div class="col-md-2">
@@ -37,16 +43,17 @@
 <br>	
 @foreach($paciente as $pacientes)
 
+<a href="{{URL::to('paciente')}}/{{$pacientes->id}}">
 <div class="box box-success">
 	<div class="box-header with-border">
-        <a href="{{URL::to('paciente')}}/{{$pacientes->id}}"><h3 class="box-title"><b>{{$pacientes->nome}}</b></h3></a>		
+        <h3 class="box-title"><b>{{$pacientes->nome}}</b></h3>		
     </div>
 
     <div class="box-body">
     	<div class="col-md-8">
     		<ul>
-				<li><strong>email</strong> {{$pacientes->email}}</li>
-				<li><strong>telefone</strong> {{$pacientes->telefone}}</li>
+				<li><strong>Email</strong> {{$pacientes->email}}</li>
+				<li><strong>Telefone</strong> {{$pacientes->telefone}}</li>
 				<li><strong>CPF</strong> {{$pacientes->cpf}}</li>
 				<li><strong>Adicionado em: </strong> {{date("d/m/Y H:i", strtotime($pacientes->created_at))}}</li>
 			</ul>
@@ -60,6 +67,7 @@
 
 	</div>
 </div>
+</a>
 
 @endforeach
 {{$paciente->links()}}

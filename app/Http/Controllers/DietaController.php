@@ -45,11 +45,4 @@ class DietaController extends Controller
 
     
 
-    public function buscaAlimento(Request $request)
-    {
-        $alimento = Alimento::where('description', 'LIKE', '%'.$request->input('busca').'%')
-        ->paginate(7);
-
-        return view('paciente.index', array('paciente' => $paciente, 'buscar' => $request->input('busca')));
-    }
 }
