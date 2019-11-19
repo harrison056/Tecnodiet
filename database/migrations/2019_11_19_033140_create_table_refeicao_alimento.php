@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateRefeicaosTable extends Migration
+class CreateTableRefeicaoAlimento extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,11 @@ class CreateRefeicaosTable extends Migration
      */
     public function up()
     {
-        Schema::create('refeicaos', function (Blueprint $table) {
+        Schema::create('table_refeicao_alimento', function (Blueprint $table) {
             $table->bigIncrements('id');
-
-            $table->date('hora');
-            $table->string('descricao');
-
-            $table->integer('dieta_id')->unsigned();
+            
+            $table->integer('refeicao_id')->unsigned();
+            $table->integer('alimento_id')->unsigned();
 
             $table->timestamps();
         });
@@ -32,6 +30,6 @@ class CreateRefeicaosTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('refeicaos');
+        Schema::dropIfExists('table_refeicao_alimento');
     }
 }

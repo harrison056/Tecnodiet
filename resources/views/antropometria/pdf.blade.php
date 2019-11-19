@@ -25,9 +25,7 @@
     	<br>
     		<label for="Paciente">Paciente:</label>
     		<label for="Paciente">{{$paciente->nome}}</label>
-		<br>
-    		<label for="Idade">Idade:</label>
-    		<input numero="name" id="Idade" value="" >
+		
     	<br>
     		<label for="Sexo">Sexo:</label>
     		@if($paciente->sexo == 1)

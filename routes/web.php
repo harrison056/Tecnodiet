@@ -37,6 +37,8 @@ Route::get('/antropometria/{id}/pdf', 'AntropometriaController@gerarPdf')->middl
 
 Route::get('/anamnese/{id}/pdf', 'AnamneseController@gerarPdf')->middleware('auth');
 
+Route::post('buscaAlimento', 'DietaController@buscaAlimento');
+
 Auth::routes();
 
 Route::get('/home', 'NutricionistaController@index')->name('home');

@@ -2,6 +2,9 @@
 @section('title','Tecnodiet - Montar Dieta')
 @section('content')
 
+<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/2.2.3/jquery.min.js"></script>
+<script type="text/javascript" src="{{ URL::asset('public/js/masked-telefone.js') }}"></script>
+
 <div class="box box-success">
     <div class="box-header with-border">
     	<h3 class="box-title"><b>Montar Dieta</b></h3>
@@ -49,32 +52,29 @@
           </form>          
 
           <ul class="resultado">
-            
+
           </ul>
 
           <script type="text/javascript">
-            $(function(){
-              //Pesquisar os cursos sem refresh na página
-              $("#busca").keyup(function(){
-    
-                var busca = $(this).val();
-    
-              //Verificar se há algo digitado
-              if(busca != ''){
-                var dados = { 
-                  palavra : busca
-                }   
-                  $.post('busca.php', dados, function(retorna){
-                    //Mostra dentro da ul os resultado obtidos 
-                    $(".resultado").html(retorna);
-                  });
-                }else{
-                  $(".resultado").html('');
-                }   
+
+            $("#busca").change( function() {
+              $("li").each(function(){
+                 $.ajax({
+                  url: 'http://tecnodiet.test/buscaAlimento',
+                  type: 'post',
+                  data: $('form').serialize(), // Remember that you need to have your csrf token included
+                  dataType: 'json',
+                  success: function( _response ){
+                    
+                  },
+                  error: function( _response ){
+                    // Handle error
+                  }
+                });
               });
             });
-          </script>
 
+          </script>
           
         </div>
 

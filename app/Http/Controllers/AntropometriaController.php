@@ -106,5 +106,5 @@ class AntropometriaController extends Controller
         $pdf = PDF::loadView('antropometria.pdf', array('paciente'=> $paciente, 'antropometria' => $antropometria));
         return $pdf->setPaper('a4')->stream();
     }
-
+    
 }

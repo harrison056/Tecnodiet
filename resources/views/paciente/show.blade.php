@@ -29,8 +29,8 @@
 				<h4><strong>Bairro</strong> {{$logradouro->bairro}}</h4>
 				<h4><strong>Cep</strong> {{$logradouro->cep}}</h4>
 				<h4><strong>Cidade</strong> {{$logradouro->cidade}}</h4>
-				<h4><strong>Adicionado em: </strong> {{date("d/m/Y H:i", strtotime($paciente->created_at))}}</h4>
-				<h4><strong>Última atualização: </strong> {{date("d/m/Y H:i", strtotime($paciente->updated_at))}}</h4>
+				<h4><strong>Adicionado em: </strong> {{date("d/m/Y", strtotime($paciente->created_at))}}</h4>
+				<h4><strong>Última atualização: </strong> {{date("d/m/Y ", strtotime($paciente->updated_at))}}</h4>
 			</ul>
     	</div>
 
@@ -56,7 +56,7 @@
             </div>
     		<br>
     		<div class="row">
-				<button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modal-danger">Excluir</button>
+				<button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modal-danger">Excluir Paciente</button>
     		</div>
     	</div>
 	</div>

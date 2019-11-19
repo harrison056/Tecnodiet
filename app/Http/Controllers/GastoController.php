@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Paciente;
 use App\Antropometria;
 use App\GastoEnergetico;
+use DateTime;
 
 
 class GastoController extends Controller
@@ -71,7 +72,7 @@ class GastoController extends Controller
             }else{
                 $tmb = (10 * $peso) + (6.25 * $altura) - (5 * $idade) - 161;
             }
-        }elseif ($protocolo == '2') {
+        }elseif ($protocolo == '3') {
             if ($sexo == 1) {
                 $tmb = 879 + 10.2 * $peso;
             }else{

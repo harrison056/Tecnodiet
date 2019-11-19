@@ -44,8 +44,12 @@ class PacienteController extends Controller
             $logradouro->bairro = $request['bairro'];
             $logradouro->cidade = $request['cidade'];
             $logradouro->cep = $request['cep'];
-            $logradouro->save();
-        
+            if ($this->validarCep($logradouro->cep) == true) {
+                $logradouro->save();
+            }else{
+                return redirect('paciente/create')->with('danger', 'Cep inválido');
+            }
+
             $dtNascimento = date("Y/d/m", strtotime($request['dtNascimento']));
             $paciente = Paciente::create([
                 'nome' => $request['nome'],
@@ -144,11 +148,19 @@ class PacienteController extends Controller
 		return view('paciente.index', array('paciente' => $paciente, 'buscar' => $request->input('busca')));
 	}
 
-    private function idade($dtNascimento){
-        $dn = new DateTime($dtNascimento);
-        $agora = new DateTime(date('Y-m-d'));
+    
 
-        $idade = $agora->diff($dn);
-        return $idade->y;
+    private function validarCep($cep) {
+        // retira espacos em branco
+        $cep = trim($cep);
+        // expressao regular para avaliar o cep
+        $avaliaCep = ereg("^[0-9]{5}-[0-9]{3}$", $cep);
+        
+        // verifica o resultado
+        if(!$avaliaCep) {            
+            return false;
+        }else{
+            return true;
+        }
     }
 }

@@ -25,7 +25,7 @@
 
 		<div class="box-body">
 			<label>Protocolo:</label>
-			<select class="form-control select2" name="protocolo" style="width: 100%;">
+			<select class="form-control select2" name="protocolo" style="width: 50%;">
                 <option selected="selected" disabled="disabled">Protocolo</option>
                	<option value="1">Harris & Benedict</option>
                 <option value="2">Mifflin St-Jeor</option>
@@ -35,12 +35,12 @@
 
 		<div class="box-body">
 			<label>Atividade Física:</label>
-			<select class="form-control select2" name="atividadeFisica" style="width: 100%;">
+			<select class="form-control select2" name="atividadeFisica" style="width: 50%;">
                 <option selected="selected" disabled="disabled">Atividade Física</option>
-               	<option value="1.2">Sedentário</option>
-                <option value="1.5">Pouco Ativo</option>
-                <option value="1.8">Ativo</option>
-                <option value="2.1">Muito Ativo</option>
+               	<option value="1">Sedentário</option>
+                <option value="2">Pouco Ativo</option>
+                <option value="3">Ativo</option>
+                <option value="4">Muito Ativo</option>
             </select>
 		</div>
 
