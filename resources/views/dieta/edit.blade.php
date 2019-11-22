@@ -3,7 +3,7 @@
 @section('content')
 
 <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/2.2.3/jquery.min.js"></script>
-<script type="text/javascript" src="{{ URL::asset('public/js/masked-telefone.js') }}"></script>
+<script type="text/javascript" src="{{url('js/jquery.min.js')}}"></script>
 
 <div class="box box-success">
     <div class="box-header with-border">
@@ -56,25 +56,15 @@
           </ul>
 
           <script type="text/javascript">
-
-            $("#busca").change( function() {
-              $("li").each(function(){
-                 $.ajax({
-                  url: 'http://tecnodiet.test/buscaAlimento',
-                  type: 'post',
-                  data: $('form').serialize(), // Remember that you need to have your csrf token included
-                  dataType: 'json',
-                  success: function( _response ){
-                    
-                  },
-                  error: function( _response ){
-                    // Handle error
-                  }
-                });
-              });
+            $.get('http://tecnodiet.test/buscaAlimento'function (alimentos) {
+              $.each(alimentos, function(){
+                
+              } )
             });
 
           </script>
+
+
           
         </div>
 
@@ -82,7 +72,7 @@
       <br>
 
       <div class="modal-footer">
-        <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Fechar</button>
         <button type="button" class="btn btn-success">Add Refeição</button>
       </div>
     </div>
