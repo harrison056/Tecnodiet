@@ -37,7 +37,7 @@ Route::get('/antropometria/{id}/pdf', 'AntropometriaController@gerarPdf')->middl
 
 Route::get('/anamnese/{id}/pdf', 'AnamneseController@gerarPdf')->middleware('auth');
 
-Route::post('/buscaAlimento/{busca}', 'DietaController@buscaAlimento');
+Route::get('/buscaAlimento/{busca}', 'DietaController@buscaAlimento')->middleware('cors');
 
 Auth::routes();
 

@@ -47,21 +47,29 @@
         </div>
 
         <div class="col-md-6">
-          <form method="POST" id="form-busca" action="">
-            <input type="text" class="form-control" id="busca" name="busca" placeholder="Buscar Alimentos">
-          </form>          
+          
+          <input type="text" class="form-control" id="busca" name="busca" placeholder="Buscar Alimentos">
+                 
 
           <ul class="resultado">
 
           </ul>
 
           <script type="text/javascript">
-            $.get('http://tecnodiet.test/buscaAlimento'function (alimentos) {
-              $.each(alimentos, function(){
-                
-              } )
+            $("#busca").keyup(function(){ 
+              $.ajax({
+                type:'GET',
+                url:'http://tecnodiet.test/buscaAlimento/' + $('#busca').val(),
+                success:function(data){
+                  $.each(data.alimento, function(index, alimento){
+                    $('.resultado').append('<li>'+ alimento.description +'</li>')
+                  });
+                },
+                error: function() { 
+                  console.log('data');
+                }
+               });
             });
-
           </script>
 
 

@@ -45,7 +45,7 @@ class DietaController extends Controller
 
     public function buscaAlimento($busca)
     {
-        $alimento = Alimento::where('description', 'LIKE', '%'.$busca.'%');
+        $alimento = Alimento::all()->where('description', 'LIKE', $busca);
 
         return response()->json(['alimento' => $alimento]);
     }
