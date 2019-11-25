@@ -10,6 +10,12 @@
     </div>
     <div class="box-body">
 
+    	@if($message = Session::get('danger'))
+			<div class="alert alert-danger">
+				{{$message}}
+			</div>
+		@endif
+
     	@if(count($errors)>0)
 		<div class="alert alert-danger">
 			<ul>

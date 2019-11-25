@@ -58,7 +58,7 @@ class RegisterController extends Controller
             'rua' => 'required',
             'bairro' => 'required',
             'cidade' => 'required',
-            'cep' => 'numeric|required'
+            'cep' => 'required'
         ]);
     }
 
@@ -76,18 +76,61 @@ class RegisterController extends Controller
         $logradouro->bairro = $data['bairro'];
         $logradouro->cidade = $data['cidade'];
         $logradouro->cep = $data['cep'];
-        $logradouro->save();
-        
-        return User::create([
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'password' => Hash::make($data['password']),
-            'telefone' => $data['tel'],
-            'crn' => $data['crn'],
-            'logradouro_id' => $logradouro->id,
-            'qtdPaciente' => $data['qtdPaciente']
-        ]);
-        
+         if ($this->validarCep($logradouro->cep) == true) {
+            
+            $telefone = $data['tel'];
+            if ($this->validarTelefone($telefone) == true) {
 
+                $logradouro->save();
+                
+                return User::create([
+                    'name' => $data['name'],
+                    'email' => $data['email'],
+                    'password' => Hash::make($data['password']),
+                    'telefone' => $data['tel'],
+                    'crn' => $data['crn'],
+                    'logradouro_id' => $logradouro->id,
+                    'qtdPaciente' => $data['qtdPaciente']
+                ]);
+                
+            }else{
+                    if ($this->validarTelefone($telefone) == false) {
+                        echo $telefone;
+                        exit();
+                        return redirect('paciente/create')->with('danger', 'Telefone inválido');
+                    }
+                    
+                }
+            
+        }
+        
+    }
+
+    private function validarCep($cep) {
+        // retira espacos em branco
+        $cep = trim($cep);
+        // expressao regular para avaliar o cep
+        $avaliaCep = preg_match("/[0-9]{5}-[0-9]{3}/", $cep);
+        
+        // verifica o resultado
+        if(!$avaliaCep) {            
+            return false;
+        }else{
+            return true;
+        }
+    }
+
+    private function validarTelefone($Telefone) {
+        
+        $Telefone = trim($Telefone);
+        
+        $avaliaTel = preg_match('/^\(\d{2}\)\d{4,5}-\d{4}$/', $Telefone);
+        
+        // verifica o resultado
+        if(!$avaliaTel) {            
+            return false;
+        }else{
+            return true;
+        }
     }
 }

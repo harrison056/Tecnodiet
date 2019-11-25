@@ -19,7 +19,7 @@ class CreateLogradourosTable extends Migration
             $table->string('rua');
             $table->string('bairro');
             $table->string('cidade');
-            $table->integer('cep');
+            $table->string('cep');
 
             $table->timestamps();
         });

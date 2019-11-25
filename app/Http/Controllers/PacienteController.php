@@ -45,32 +45,48 @@ class PacienteController extends Controller
             $logradouro->cidade = $request['cidade'];
             $logradouro->cep = $request['cep'];
             if ($this->validarCep($logradouro->cep) == true) {
-                $logradouro->save();
+                
+                $telefone = $request['tel'];
+                $cpf = $request['cpf'];
+
+                if ($this->validarTelefone($telefone) == true && $this->validarCpf($cpf) == true) {
+
+                    $logradouro->save();
+
+                    $dtNascimento = date("Y/d/m", strtotime($request['dtNascimento']));
+                    $paciente = Paciente::create([
+                        'nome' => $request['nome'],
+                        'telefone' => $request['tel'],
+                        'dtNascimento' => $dtNascimento,
+                        'sexo' => $request['sexo'],
+                        'cpf' => $request['cpf'],
+                        'logradouro_id' => $logradouro->id,
+                        'email' => $request['email'],
+                        'user_id' => Auth::user()->id
+                    ]);
+
+                    $paciente->antropometria()->create(); //Cria Antropometria
+                    $paciente->anamnese()->create(); //Cria Anamnese
+                    $paciente->gastoEnergetico()->create();//Cria Gasto Energético
+                    $paciente->dieta()->create();//Cria Gasto Energético
+
+                    if ($paciente->save() && $logradouro->save()) {
+                    return redirect('paciente/')->with('success', 'Paciente cadastrado com sucesso!');
+                    }
+
+                }else{
+                    if ($this->validarTelefone($telefone) == false) {
+                        return redirect('paciente/create')->with('danger', 'Telefone inválido');
+                    }
+                    if ($this->validarCpf($cpf) == false) {
+                        return redirect('paciente/create')->with('danger', 'Cpf inválido');
+                    }
+                }
+
             }else{
                 return redirect('paciente/create')->with('danger', 'Cep inválido');
             }
 
-            $dtNascimento = date("Y/d/m", strtotime($request['dtNascimento']));
-            $paciente = Paciente::create([
-                'nome' => $request['nome'],
-                'telefone' => $request['tel'],
-                'dtNascimento' => $dtNascimento,
-                'sexo' => $request['sexo'],
-                'cpf' => $request['cpf'],
-                'logradouro_id' => $logradouro->id,
-                'email' => $request['email'],
-                'user_id' => Auth::user()->id
-            ]);
-
-
-            $paciente->antropometria()->create(); //Cria Antropometria
-            $paciente->anamnese()->create(); //Cria Anamnese
-            $paciente->gastoEnergetico()->create();//Cria Gasto Energético
-            $paciente->dieta()->create();//Cria Gasto Energético
-
-            if ($paciente->save() && $logradouro->save()) {
-                return redirect('paciente/')->with('success', 'Paciente cadastrado com sucesso!');
-            }
         }else{
             return redirect('paciente/')->with('danger', 'Você chegou ao número máximo de pacientes para seu plano. Exclua algum registro ou contarte novo Plano');
         }
@@ -135,7 +151,6 @@ class PacienteController extends Controller
 		$antropometria->delete();
         $anamnese->delete();
         $gastoEnergetico->delete();
-        $dieta->delete();
 		
 		return redirect('paciente/')->with('success','Paciente deletado com sucesso!');
 	}
@@ -154,7 +169,35 @@ class PacienteController extends Controller
         // retira espacos em branco
         $cep = trim($cep);
         // expressao regular para avaliar o cep
-        $avaliaCep = ereg("^[0-9]{5}-[0-9]{3}$", $cep);
+        $avaliaCep = preg_match("/[0-9]{5}-[0-9]{3}/", $cep);
+        
+        // verifica o resultado
+        if(!$avaliaCep) {            
+            return false;
+        }else{
+            return true;
+        }
+    }
+
+    private function validarTelefone($Telefone) {
+        
+        $Telefone = trim($Telefone);
+        
+        $avaliaTel = preg_match('/^\(\d{2}\)\d{4,5}-\d{4}$/', $Telefone);
+        
+        // verifica o resultado
+        if(!$avaliaTel) {            
+            return false;
+        }else{
+            return true;
+        }
+    }
+
+    private function validarCpf($cpf) {
+        // retira espacos em branco
+        $cpf = trim($cpf);
+        // expressao regular para avaliar o cpf
+        $avaliaCep = preg_match("/[0-9]{3}.[0-9]{3}.[0-9]{3}-[0-9]{2}/", $cpf);
         
         // verifica o resultado
         if(!$avaliaCep) {            
