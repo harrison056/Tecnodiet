@@ -2,6 +2,9 @@
 @section('title','Tecnodiet - Cadastrar Paciente')
 @section('content')
 
+<script type="text/javascript" src="{{url('js/jquery.min.js')}}"></script>
+<script type="text/javascript" src="{{url('js/jquery.mask.min.js')}}"></script>
+
 
 <div class="box box-success">
 
@@ -107,5 +110,14 @@
     <!-- /.box-body -->
 </div>
     <!-- /.box -->
+
+<script type="text/javascript">
+    
+    $('#tel').mask('(99)99999-9999');
+    $('#cep').mask('00000-000');
+    $('#cpf').mask('000.000.000-00');
+    $('#dtNascimento').mask('99/99/9999');
+    
+</script>
 
 @endsection

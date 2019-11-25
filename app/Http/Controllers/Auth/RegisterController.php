@@ -53,7 +53,7 @@ class RegisterController extends Controller
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
-            'tel' => ['required','celular_com_ddd'],
+            'tel' => ['required'],
             'crn' => ['required','numeric'],
             'rua' => 'required',
             'bairro' => 'required',
@@ -76,7 +76,7 @@ class RegisterController extends Controller
         $logradouro->bairro = $data['bairro'];
         $logradouro->cidade = $data['cidade'];
         $logradouro->cep = $data['cep'];
-         if ($this->validarCep($logradouro->cep) == true) {
+        if ($this->validarCep($logradouro->cep) == true) {
             
             $telefone = $data['tel'];
             if ($this->validarTelefone($telefone) == true) {
@@ -94,17 +94,12 @@ class RegisterController extends Controller
                 ]);
                 
             }else{
-                    if ($this->validarTelefone($telefone) == false) {
-                        echo $telefone;
-                        exit();
-                        return redirect('paciente/create')->with('danger', 'Telefone inválido');
-                    }
-                    
-                }
-            
-        }
-        
+                echo $telefone;
+                exit();
+            }       
+        }   
     }
+        
 
     private function validarCep($cep) {
         // retira espacos em branco
@@ -124,7 +119,7 @@ class RegisterController extends Controller
         
         $Telefone = trim($Telefone);
         
-        $avaliaTel = preg_match('/^\(\d{2}\)\d{4,5}-\d{4}$/', $Telefone);
+        $avaliaTel = preg_match('/^\(\d{2}\)\d{5}-\d{4}$/', $Telefone);
         
         // verifica o resultado
         if(!$avaliaTel) {            

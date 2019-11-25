@@ -7,6 +7,10 @@
 @section('body_class', 'register-page')
 
 @section('body')
+
+    <script type="text/javascript" src="{{url('js/jquery.min.js')}}"></script>
+    <script type="text/javascript" src="{{url('js/jquery.mask.min.js')}}"></script>
+
     <div class="register-box">
         <div class="register-logo">
             <a href="/"><img src="{{url('img/logo-pequeno.png')}}" style="width:40; height:90px;"><br>{!! config('adminlte.logo', '<b>Admin</b>LTE') !!}</a>
@@ -16,7 +20,7 @@
             <p class="login-box-msg">{{ trans('adminlte::adminlte.register_message') }}</p>
             <form action="{{ url(config('adminlte.register_url', 'register')) }}" method="post">
                 {{ csrf_field() }}
-
+                
                 <div class="form-group has-feedback {{ $errors->has('name') ? 'has-error' : '' }}">
                     <input type="text" name="name" class="form-control" value="{{ old('name') }}"
                            placeholder="{{ trans('adminlte::adminlte.full_name') }}">
@@ -58,7 +62,7 @@
                     @endif
                 </div>
                 <div class="form-group has-feedback {{ $errors->has('tel') ? 'has-error' : '' }}">
-                    <input type="text" name="tel" class="form-control" value="{{ old('tel') }}"
+                    <input type="text" name="tel" id="tel" class="form-control" value="{{ old('tel') }}"
                            placeholder="Telefone">
                     <span class="glyphicon glyphicon-earphone form-control-feedback"></span>
 
@@ -68,8 +72,7 @@
                         </span>
                     @endif
                 </div>
-                <script type="text/javascript" src="js/jquery.min.js"></script>
-                <script type="text/javascript" src="{{ URL::asset('public/js/masked-telefone.js') }}"></script>
+                
 
                 <div class="form-group has-feedback {{ $errors->has('crn') ? 'has-error' : '' }}">
                     <input type="text" name="crn" class="form-control" value="{{ old('crn') }}"
@@ -83,7 +86,7 @@
                 </div>
 
                 <div class="form-group has-feedback {{ $errors->has('cep') ? 'has-error' : '' }}">
-                    <input type="text" name="cep" class="form-control" value="{{ old('cep') }}"
+                    <input type="text" name="cep" id="cep" class="form-control" value="{{ old('cep') }}"
                            placeholder="CEP">
                     <span class="glyphicon glyphicon-screenshot form-control-feedback"></span>
                     @if ($errors->has('cep'))
@@ -148,6 +151,15 @@
         </div>
         <!-- /.form-box -->
     </div><!-- /.register-box -->
+
+<script type="text/javascript">
+    
+    $('#tel').mask('(99)99999-9999');
+    $('#cep').mask('00000-000');
+    $('#dtNascimento').mask('99/99/9999');
+    
+</script>
+
 @stop
 
 @section('adminlte_js')
